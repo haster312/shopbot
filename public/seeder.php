@@ -12,7 +12,7 @@ $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 */
 
 $bot->answer('hi', [
-		'text' => 'Hi [first_name]! I could help you with the following subjects',
+		'text' => "Hi [first_name]! I could help you with the following subjects:",
 		'buttons' => [
 	        [
 	            'type' => 'postback',

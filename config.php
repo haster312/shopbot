@@ -172,13 +172,13 @@ return array(
         ],
         [
             'type'      => 'postback',
-            'title'     => 'Subscribe',
+            'title'     => 'Products',
             'payload'   => 'SUBSCRIBE'
         ],
         [
-            'type'      => 'web_url',
-            'title'     => 'Giga AI',
-            'url'       => 'https://giga.ai'
+            'type'      => 'event',
+            'title'     => 'Events',
+            'payload'	=> 'EVENT'
         ]
     ],
 );
