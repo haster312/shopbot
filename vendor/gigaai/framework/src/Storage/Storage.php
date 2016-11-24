@@ -27,10 +27,10 @@ class Storage
     {
         $this->db = new Capsule;
 
-        $config = Config::get('pgsql');
+        $config = Config::get('mysql');
 
         $this->db->addConnection([
-            'driver'    => 'pgsql',
+            'driver'    => 'mysql',
             'host'      => $config['host'],
             'database'  => $config['database'],
             'username'  => $config['username'],
