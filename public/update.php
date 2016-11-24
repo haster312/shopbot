@@ -1,12 +1,11 @@
 <?php
 $bot = require_once __DIR__ . '/../bootstrap/bot.php';
-use GigaAI\Http\ThreadSettings;
 //commands to reload bot when a new source version is deployed to heroku
 
 //Update threadSettings
-ThreadSettings::updateGetStartedButton();
-ThreadSettings::updateGreetingText();
-ThreadSettings::updatePersistentMenu();
+GigaAI\Http\ThreadSettings::updateGetStartedButton();
+GigaAI\Http\ThreadSettings::updateGreetingText();
+GigaAI\Http\ThreadSettings::updatePersistentMenu();
 
 //Update seeder
 require_once 'seeder.php';
