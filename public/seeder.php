@@ -11,7 +11,21 @@ $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 |
 */
 
-$bot->answer('hi', 'Hi [first_name]!');
+$bot->answer('hi', [
+		'text' => 'Hi [first_name]! I could help you with the following subjects',
+		'buttons' => [
+	        [
+	            'type' => 'postback',
+	            'payload' => 'USER_CLICKED_EVENT_BUTTON',
+	            'title' => 'Events'
+	        ],
+	        [
+	            'type' => 'postback',
+	            'payload' => 'USER_CLICKED_PRODUCT_BUTTON',
+	            'title' => 'Products'
+	        ]
+    	]
+	]);
 
 /*
 |--------------------------------------------------------------------------
