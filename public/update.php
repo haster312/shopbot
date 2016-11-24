@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php';
 
 //commands to reload bot when a new source version is deployed to heroku
 
