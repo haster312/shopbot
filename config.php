@@ -55,10 +55,10 @@ return array(
 	 |
 	 */
     'mysql' => [
-        'host'      => 'localhost',
-        'database'  => 'YOUR_DATABASE',
-        'username'  => 'YOUR_USERNAME',
-        'password'  => 'YOUR_PASSWORD',
+        'host'      => 'sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        'database'  => 'py8f8c995rfqb9lo',
+        'username'  => 'hlsezsfde0au226c',
+        'password'  => 'i7luynhy8pinj59p',
         'charset'   => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'prefix'    => '',
