@@ -54,24 +54,24 @@ return array(
 	 | If storage driver is `mysql`, set connection here
 	 |
 	 */
-//    'mysql' => [
-//        'host'      => 'sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-//        'database'  => 'py8f8c995rfqb9lo',
-//        'username'  => 'hlsezsfde0au226c',
-//        'password'  => 'i7luynhy8pinj59p',
-//        'charset'   => 'utf8',
-//        'collation' => 'utf8_unicode_ci',
-//        'prefix'    => '',
-//    ],
     'mysql' => [
-        'host'      => '127.0.0.1',
-        'database'  => 'd1',
-        'username'  => 'root',
-        'password'  => '',
+        'host'      => 'sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        'database'  => 'py8f8c995rfqb9lo',
+        'username'  => 'hlsezsfde0au226c',
+        'password'  => 'i7luynhy8pinj59p',
         'charset'   => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'prefix'    => '',
     ],
+//    'mysql' => [
+//        'host'      => '127.0.0.1',
+//        'database'  => 'd1',
+//        'username'  => 'root',
+//        'password'  => '',
+//        'charset'   => 'utf8',
+//        'collation' => 'utf8_unicode_ci',
+//        'prefix'    => '',
+//    ],
 
     'pgsql' => [
         'host'      => 'ec2-54-235-65-139.compute-1.amazonaws.com',
