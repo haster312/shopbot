@@ -11,8 +11,8 @@ class CategoryBusiness {
 
     public function getAllCategory() {
         $category = new Category();
-        var_dump($category,'abc');exit;
         $categories = Category::all();
+        var_dump($category,$categories,'abc');exit;
         return $categories;
     }
 }
