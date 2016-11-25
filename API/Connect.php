@@ -10,8 +10,10 @@ class Connect {
         $password = $dbopts['pass'];
         $database = ltrim($dbopts['path'], '/');
 
+        $dsn = "pgsql:"."host=$hostname;"."dbname=$database;"."user=$username;"."password=$password";
+
         try {
-            $db = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
+            $db = new PDO($dsn);
             // set the PDO error mode to exception
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Connected successfully";
