@@ -48,30 +48,31 @@ $bot->answer('payload:USER_TAPPED_EVENT', function() {
 });
 
 // Products
-$bot->answer('payload:USER_TAPPED_PRODUCT', 'Please let me know the product line which you interested in')
-	->wait('category');
-$bot->answer('@category', function($bot){
-	//Check the category list
-	$categories = [];
-	$aCategory = [
-        "title"     => "Iphone",
-        "image_url" => "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-6s-colors.jpg",
-        "subtitle"  => "Amazing smartphone",
-        "buttons"   => [
-            [
-                "type"    => "postback",
-                "payload" => "VIEW_DETAIL",
-                "title"   => "Detail"
+$bot->answer('payload:USER_TAPPED_PRODUCT', [
+    'We have some kind of product lines for you.',
+    function(){
+        //Check the category list
+        $categories = [];
+        $aCategory = [
+            "title"     => "Iphone",
+            "image_url" => "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-6s-colors.jpg",
+            "subtitle"  => "Amazing smartphone",
+            "buttons"   => [
+                [
+                    "type"    => "postback",
+                    "payload" => "VIEW_DETAIL",
+                    "title"   => "Detail"
+                ]
             ]
-        ]
-    ];
-    $categories[] = $aCategory;
-    $categories[] = $aCategory;
-    return $categories;
-});
+        ];
+        $categories[] = $aCategory;
+        $categories[] = $aCategory;
+        return $categories;
+    }
+]);
 
 // Help
-$bot->answer('payload:USER_TAPPED_ABOUT', [
+$bot->answer(['payload:USER_TAPPED_ABOUT'], [
 	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries',
 	'Check our website for more detail: http://ebiz.solutions']
 );
