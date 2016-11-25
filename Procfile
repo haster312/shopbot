@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 chatbot/
+web: vendor/bin/heroku-php-apache2
