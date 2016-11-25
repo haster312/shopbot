@@ -8,9 +8,14 @@ class API {
 
     }
 
-    public static function getAllCategory() {
+    public static function getAllCategory($limit = null) {
         $db = Connect::ConnectDB();
-        $query = "SELECT * FROM salesforce.category__c";
+        if($limit > 0) {
+            $query = "SELECT * FROM salesforce.category__c limit $limit";
+        }  else {
+            $query = "SELECT * FROM salesforce.category__c";
+        }
+
         $result = $db->query($query);
         $categories = [];
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
