@@ -3,21 +3,15 @@
 require __DIR__ . '/../vendor/autoload.php';
 require  "Connect.php";
 class API {
-
-    private static $db;
-    public function __construct(Connect $connect) {
-        API::$db = $connect->ConnectDB();
-    }
-
     public static function checkUser($facebookId){
 
     }
 
     public static function getCategory() {
-        var_dump(API::$db);exit;
+        $db = Connect::ConnectDB();
         $query = "SELECT * FROM salesforce.category__c";
-        $result = API::$db->query($query);
-
+        $result = $db->query($query);
+        var_dump($result);exit;
         $category = [];
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $category[] = $row;

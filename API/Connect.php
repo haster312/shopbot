@@ -2,7 +2,7 @@
 
 class Connect {
 
-    public function ConnectDB()
+    public static function ConnectDB()
     {
         $dbopts = parse_url(getenv('DATABASE_URL'));
         $hostname = $dbopts['host'];
@@ -15,7 +15,7 @@ class Connect {
             // set the PDO error mode to exception
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Connected successfully";
-            return "Connected successfully";
+            return $db;
         } catch (PDOException $e) {
             return "Connection failed: " . $e->getMessage();
         }
