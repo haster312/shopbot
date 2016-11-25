@@ -1,3 +1,6 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+category:
+    path:      /category
+    defaults:  { _controller: AppBundle:Category:allCategory }
