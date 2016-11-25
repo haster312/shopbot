@@ -10,7 +10,7 @@ $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 |
 */
 
-$bot->answer('%hi%hello%fine%', [
+$bot->answer('/(hi|hello|fine)/g', [
 	'Hello [first_name]! I could help you with the following items',
     'quick_replies' => [
         [
@@ -84,6 +84,13 @@ $bot->answer('payload:GIGA_GET_STARTED_PAYLOAD', 'Hi [first_name]! How are you t
 
 // Default answer
 $bot->answer('default:', 'Sorry I\'m not understand. You could check the Menu for begin the conversation. Thank you.');
+
+// Other
+$bot->answer([
+    'thank you'                 => 'It been my pleasure!',
+    'you%funny%'                => 'I don\'t think so :)',
+    '/(fuck|stupid|shit)/g'     => 'Sorry but it is my best'
+]);
 
 // Print some message to the browser when done
 dd('Nodes seeded!');
