@@ -10,7 +10,7 @@ class CategoryBusiness {
     }
 
     public static function getAllCategory() {
-
+        var_dump('ab');exit;
         $categories = CategoryBusiness::getDoctrine()
             ->getRepository('AppBundle:Category')
             ->all();
