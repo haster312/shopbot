@@ -7,6 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 class CategoryController extends Controller {
 
     public function allCategory() {
-        dd('abc');
+        var_dump('abc');exit;
     }
 }
