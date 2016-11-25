@@ -1,6 +1,5 @@
 <?php
-
-$bot = require_once __DIR__ . '/../bootstrap/bot.php';
+if(!isset($bot)) $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 
 /*
 |--------------------------------------------------------------------------
