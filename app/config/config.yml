@@ -46,7 +46,6 @@ monolog:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver: pdo_pgsql
         url: "%database_url%"
 
         charset:  UTF8
