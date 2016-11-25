@@ -8,7 +8,6 @@ class CategoryController extends Controller {
 
     protected $categoryBusiness;
     function __construct(CategoryBusiness $categoryBusiness) {
-
         $this->categoryBusiness = $categoryBusiness;
     }
 
