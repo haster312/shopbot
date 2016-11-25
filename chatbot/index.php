@@ -13,14 +13,3 @@ $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 // Run the bot
 $bot->run();
 
-
-$app = new Silex\Application();
-$app['debug'] = true;
-
-$app->get('/', function() use($app) {
-    return "abc";
-});
-
-$app->get('/account/', function() use($app) {
-    return "Account";
-});
