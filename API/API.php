@@ -1,9 +1,28 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+require  "Connect.php";
 class API {
 
-    public function checkUser($facebookId){
+    private static $db;
+    public function __construct(Connect $connect) {
+        API::$db = $connect->ConnectDB();
+    }
 
+    public static function checkUser($facebookId){
+
+    }
+
+    public static function getCategory() {
+
+        $query = "SELECT * FROM salesforce.category__c";
+        $result = API::$db->query($query);
+        var_dump($result);exit;
+        $category = [];
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $category[] = $row;
+        }
+
+        return $category;
     }
 }
