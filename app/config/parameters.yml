@@ -10,5 +10,3 @@ parameters:
     mailer_user: null
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
-    database_url: 'postgres://trdczucnrhrtaf:-Ck0ag6FHo_ASToRoNxzntymnT@ec2-54-243-203-232.compute-1.amazonaws.com:5432/d4fumq7k3caj6v'
-    monolog_action_level: error

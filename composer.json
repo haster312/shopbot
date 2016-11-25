@@ -34,6 +34,9 @@
         "symfony/phpunit-bridge": "^2.7"
     },
     "scripts": {
+        "pre-install-cmd": [
+            "AppBundle\\Composer\\HerokuEnvironment::populateEnvironment"
+        ],
         "warmup": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
@@ -62,11 +65,25 @@
         "symfony-web-dir": "web",
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
+        "extra": {
+            "heroku": {
+                "framework": "symfony3",
+                "document-root": "web",
+                "php-config": [
+                    "date.timezone=Europe/Kiev",
+                    "display_errors=off",
+                    "short_open_tag=off"
+                ]
+            }
+        },
         "incenteev-parameters": {
             "file": "app/config/parameters.yml",
             "env-map": {
-                "database_url": "DATABASE_URL",
-                "monolog_action_level": "LOG_LEVEL"
+                "database_host": "DATABASE_HOST",
+                "database_port": "DATABASE_PORT",
+                "database_name": "DATABASE_NAME",
+                "database_user": "DATABASE_USER",
+                "database_password": "DATABASE_PASSWORD"
             }
         },
         "branch-alias": {
