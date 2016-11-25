@@ -10,12 +10,10 @@ class CategoryBusiness {
     }
 
     public function getAllCategory() {
-        echo phpinfo();
-        exit;
-//        $categories = $this->getDoctrine()
-//            ->getRepository('AppBundle:Category')
-//            ->all();
-//        var_dump($categories);exit;
-//        return $categories;
+        $categories = $this->getDoctrine()
+            ->getRepository('AppBundle:Category')
+            ->all();
+        var_dump($categories,'abc');exit;
+        return $categories;
     }
 }
