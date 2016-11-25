@@ -71,10 +71,10 @@ $bot->answer('@category', function($bot){
 });
 
 // Help
-$bot->answer('About Ebiz', 
+$bot->answer('About Ebiz', [
 	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries',
-	'Check our website for more detail: http://ebiz.solutions'
-	);
+	'Check our website for more detail: http://ebiz.solutions']
+);
 
 
 /*
