@@ -9,11 +9,11 @@ class CategoryBusiness {
 
     }
 
-    public static function getAllCategory() {
-        var_dump('ab');exit;
-        $categories = CategoryBusiness::getDoctrine()
+    public function getAllCategory() {
+        $categories = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
             ->all();
+        var_dump($categories);exit;
         return $categories;
     }
 }
