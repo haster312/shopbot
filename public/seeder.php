@@ -42,13 +42,13 @@ $bot->answer('%hi%hello%fine%', [
 */
 
 // Events
-$bot->answer('Events', function() {
+$bot->answer('payload:USER_TAPPED_EVENT', function() {
 	//Check the events
 	return "There is no event at the moment. But I guess in the next few days, it will has somethings cool.";
 });
 
 // Products
-$bot->answer('Products', 'Please let me know the product line which you interested in')
+$bot->answer('payload:USER_TAPPED_PRODUCT', 'Please let me know the product line which you interested in')
 	->wait('category');
 $bot->answer('@category', function($bot){
 	//Check the category list
@@ -68,10 +68,11 @@ $bot->answer('@category', function($bot){
     $categories[] = $aCategory;
     $categories[] = $aCategory;
     $categories[] = $aCategory;
+    return $categories;
 });
 
 // Help
-$bot->answer('About Ebiz', [
+$bot->answer('payload:USER_TAPPED_ABOUT', [
 	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries',
 	'Check our website for more detail: http://ebiz.solutions']
 );
