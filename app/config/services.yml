@@ -4,6 +4,6 @@ parameters:
 #    parameter_name: value
 
 services:
-    my.business.class:
+    category.business:
         class: AppBundle\Business\CategoryBusiness
         arguments: ["@doctrine.orm.entity_manager"]

@@ -6,15 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Business\CategoryBusiness;
 class CategoryController extends Controller {
 
-    public $categoryBusiness;
-    function __construct(CategoryBusiness $categoryBusiness)
-    {
-        $this->categoryBusiness = $categoryBusiness;
-    }
-
     public function allCategoryAction() {
-        $categoryBusiness = $this->categoryBusiness;
-        $category = $categoryBusiness->getAllCategory();
+
+        $category = $this->get('category.business')->getAllCategory();
         var_dump($category,'test');exit;
         $categories = $this->getDoctrine()
             ->getRepository('AppBundle:Category')

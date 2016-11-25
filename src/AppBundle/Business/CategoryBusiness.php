@@ -1,18 +1,18 @@
 <?php
 namespace AppBundle\Business;
 
-use AppBundle\Entity\Category;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 class CategoryBusiness {
 
-    public $manager;
-    public function __construct(EntityManager $manager)
+    public $entityManager;
+    public function __construct(EntityManager $entityManager)
     {
-        $this->manager = $manager;
+        $this->entityManager = $entityManager;
     }
 
     public function getAllCategory() {
-        $categories = $this->manager
+        $categories = $this->entityManager
             ->getRepository('AppBundle:Category')
             ->findAll();
         return $categories;
