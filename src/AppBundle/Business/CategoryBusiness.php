@@ -3,6 +3,7 @@ namespace AppBundle\Business;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+
 class CategoryBusiness {
 
     public $entityManager;
@@ -17,4 +18,6 @@ class CategoryBusiness {
             ->findAll();
         return $categories;
     }
+
+
 }

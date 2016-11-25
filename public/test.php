@@ -1,6 +1,9 @@
 <?php
 
 use AppBundle\Business\CategoryBusiness;
+use Doctrine\ORM\EntityManager;
 
-$categories = $this->get('category.business')->getAllCategory();
-var_dump($categories);exit;
+$this->get('category.business')->getAllCategory();
+
+
+
