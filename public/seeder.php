@@ -60,7 +60,7 @@ $bot->answer('@category', function($bot){
         "buttons"   => [
             [
                 "type"  	=> "payload",
-                "payload" 	=> "USER_CLICKED_DETAILED_BUTTON"
+                "payload" 	=> "USER_CLICKED_DETAILED_BUTTON",
                 "title" 	=> "Detail"
             ]
         ]
