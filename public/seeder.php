@@ -50,19 +50,16 @@ $bot->answer('payload:USER_TAPPED_EVENT', function() {
 // Products
 $bot->answer('payload:USER_TAPPED_PRODUCT', 'Please let me know the product line which you interested in')
 	->wait('category');
-$bot->answer('@category', function($bot){
-	//Check the category list
-	$categories = [];
-	$aCategory = [
+$bot->answer('@category', [
         [
             "title"     => "Iphone",
             "image_url" => "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-6s-colors.jpg",
             "subtitle"  => "The iPhones",
             "buttons"   => [
                 [
-                    "type"  	=> "payload",
-                    "payload" 	=> "USER_CLICKED_DETAILED_BUTTON",
-                    "title" 	=> "Detail"
+                    "type"      => "payload",
+                    "payload"   => "USER_CLICKED_DETAILED_BUTTON",
+                    "title"     => "Detail"
                 ]
             ]
         ],
@@ -78,9 +75,7 @@ $bot->answer('@category', function($bot){
                 ]
             ]
         ]
-    ];
-    return $aCategory;
-});
+    ]);
 
 // Help
 $bot->answer('payload:USER_TAPPED_ABOUT', [
