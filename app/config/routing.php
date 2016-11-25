@@ -6,8 +6,7 @@ use Symfony\Component\Routing\Route;
 $collection = new RouteCollection();
 $collection->add('category', new Route('/category',
     array(
-        '_controller' => 'AppBundle:Blog:list',
-        'page'        => 1,
+        '_controller' => 'AppBundle:Category:allCategory'
     )
 ));
 

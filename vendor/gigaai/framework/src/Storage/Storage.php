@@ -25,7 +25,14 @@ class Storage
 
     public function __construct()
     {
+        $this->createConnection();
+    }
+
+    private function createConnection()
+    {
         $this->db = new Capsule;
+
+        $this->createConfigFromWordPress();
 
         $config = Config::get('mysql');
 
@@ -44,6 +51,26 @@ class Storage
         $this->db->setAsGlobal();
 
         $this->db->bootEloquent();
+    }
+
+    private function createConfigFromWordPress()
+    {
+        if (defined('DB_HOST') && defined('DB_NAME') && defined('DB_USER') && defined('DB_PASSWORD') && defined('DB_CHARSET'))
+        {
+            global $wpdb;
+
+            $mysql = [
+                'host'      => DB_HOST,
+                'database'  => DB_NAME,
+                'username'  => DB_USER,
+                'password'  => DB_PASSWORD,
+                'charset'   => DB_CHARSET,
+                'collation' => null,
+                'prefix'    => $wpdb->prefix,
+            ];
+
+            Config::set('mysql', $mysql);
+        }
     }
 
     private function pull($lead_id)
@@ -96,7 +123,6 @@ class Storage
             }
         }
         try {
-
             $lead = Lead::updateOrCreate([
                 'source' => 'facebook',
                 'user_id' => $user['user_id']
@@ -168,17 +194,73 @@ class Storage
 
     private function getUserMeta($user_id, $key = '', $default = '')
     {
-        $meta = $this->db->table('bot_leads_meta')->where([
-            'user_id' => $user_id,
-            'meta_key' => $key
-        ])->first();
+        $where = [
+            'user_id' => $user_id
+        ];
 
-        if ( ! is_null($meta))
-            return $meta->meta_value;
+        if ( ! empty($key)) {
+            $where['meta_key'] = $key;
 
-        return $default;
+            $meta = $this->db->table('bot_leads_meta')->where($where)->first();
+
+            if ( ! is_null($meta))
+                return $meta['meta_value'];
+
+            return $default;
+        }
+        else {
+            $meta = $this->db->table('bot_leads_meta')->where($where)->lists('meta_value', 'meta_key');
+            return $meta;
+        }
     }
 
+    /**
+     * Todo: Optimize this method
+     *
+     * @param $lead_id
+     * @param array $key
+     * @param null $value
+     */
+    private function updateLeadMeta($lead_id, $key = [], $value = null)
+    {
+        $meta = [];
+
+        if (is_string($key) && ! empty($value)) {
+            $meta[$key] = $value;
+        }
+        else {
+            $meta = $key;
+        }
+
+        // Is Lead Exists
+        $exists = Lead::where('user_id', $lead_id)->exists();
+
+        if ( ! $exists)
+            return;
+
+        foreach ($meta as $key => $value)
+        {
+            $exists = $this->db->table('bot_leads_meta')->where([
+                    'user_id' => $lead_id,
+                    'meta_key' => $key
+                ])->exists();
+
+            if ($exists) {
+                $this->db->table('bot_leads_meta')->where([
+                    'user_id' => $lead_id,
+                    'meta_key' => $key
+                ])->update([
+                    'meta_value' => $value
+                ]);
+            } else {
+                $this->db->table('bot_leads_meta')->insert([
+                    'user_id' => $lead_id,
+                    'meta_key' => $key,
+                    'meta_value' => $value
+                ]);
+            }
+        }
+    }
 
     /**
      * Search in collection

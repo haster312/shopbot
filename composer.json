@@ -14,6 +14,7 @@
         "php": ">=5.5.9",
         "symfony/symfony": "3.0.*",
         "doctrine/orm": "^2.5",
+        "symfony/var-dumper": " 2.8.*",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
         "symfony/swiftmailer-bundle": "^2.3",
@@ -33,9 +34,7 @@
         "symfony/phpunit-bridge": "^2.7"
     },
     "scripts": {
-        "pre-install-cmd": [
-          "Acme\\HerokuBundle\\HerokuDatabase::populateEnvironment"
-        ],
+
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
@@ -63,10 +62,12 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml",
             "env-map": {
-                "database_url": "DATABASE_URL",
-                "monolog_action_level": "LOG_LEVEL"
+                "database_host": "DATABASE_HOST",
+                "database_port": "DATABASE_PORT",
+                "database_name": "DATABASE_NAME",
+                "database_user": "DATABASE_USER",
+                "database_password": "DATABASE_PASSWORD"
             }
-
         },
         "branch-alias": {
             "dev-master": "3.0-dev"

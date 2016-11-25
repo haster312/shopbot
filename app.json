@@ -1,0 +1,10 @@
+{
+    "name": "Ebizbot",
+    "addons": [
+        "heroku-postgresql:hobby-dev"
+    ],
+    "scripts": {
+        "postdeploy": "php bin/console doctrine:schema:create"
+    }
+
+}
