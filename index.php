@@ -1,3 +1,3 @@
 <?php
-
-// Silence is golden
+require('vendor/autoload.php');
+require('public/routes.php');
