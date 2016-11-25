@@ -31,8 +31,8 @@ $app->get('/', function() use($app) {
 
 
 $app->get('/category', function() use($app) {
-    $category = API::getCategory();
-    var_dump($category);exit;
+    $category = API::getAllCategory();
+    dd($category);
 });
 
 $app->run();
