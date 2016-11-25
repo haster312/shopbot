@@ -9,14 +9,13 @@ class API {
 
     public static function getCategory() {
         $db = Connect::ConnectDB();
-        var_dump($db);exit;
         $query = "SELECT * FROM salesforce.category__c";
         $result = $db->query($query);
         $category = [];
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $category[] = $row;
         }
-
+        dd($category);
         return $category;
     }
 }
