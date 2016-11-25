@@ -33,7 +33,6 @@ $app->get('/', function() use($app) {
 $app->get('/category', function() use($app) {
     $category = API::getCategory();
     var_dump($category);exit;
-    return
 });
 
 $app->run();
