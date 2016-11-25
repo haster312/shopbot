@@ -10,7 +10,7 @@ $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 |
 */
 
-$bot->answer('/(hi|hello|fine)/g', [
+$bot->answer('^(nice|good|great)(.*)man$', [
 	'Hello [first_name]! I could help you with the following items',
     'quick_replies' => [
         [
@@ -89,7 +89,7 @@ $bot->answer('default:', 'Sorry I\'m not understand. You could check the Menu fo
 $bot->answer([
     'thank you'                 => 'It been my pleasure!',
     'you%funny%'                => 'I don\'t think so :)',
-    '/(fuck|stupid|shit)/g'     => 'Sorry but it is my best'
+    '^(bad|bitch)(.*)girl$'     => 'Sorry but it is my best'
 ]);
 
 // Print some message to the browser when done
