@@ -50,8 +50,9 @@ $bot->answer('payload:USER_TAPPED_EVENT', function() {
 // Products
 $bot->answer('payload:USER_TAPPED_PRODUCT', function() {
     //Check the category list
+    $mix = [];
+    $mix[] = 'We have some kind of product lines for you.';
     $categories = [];
-    $categories[] = 'We have some kind of product lines for you.';
     $aCategory = [
         "title"     => "Iphone",
         "image_url" => "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-6s-colors.jpg",
@@ -66,7 +67,8 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function() {
     ];
     $categories[] = $aCategory;
     $categories[] = $aCategory;
-    return $categories;
+    $mix[] = $categories;
+    return $mix;
 });
 
 // About Ebiz
