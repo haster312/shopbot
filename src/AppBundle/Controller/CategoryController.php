@@ -6,14 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Business\CategoryBusiness;
 class CategoryController extends Controller {
 
-    protected $categoryBusiness;
-    function __construct(CategoryBusiness $categoryBusiness) {
-        $this->categoryBusiness = $categoryBusiness;
-    }
-
     public function allCategoryAction() {
-        var_dump('abc');exit;
-        $categories = $this->categoryBusiness->getAllCategory();
+        $categoryBusiness = new CategoryBusiness();
+        $categories = $categoryBusiness->getAllCategory();
         var_dump($categories);exit;
     }
 }
