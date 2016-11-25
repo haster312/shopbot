@@ -34,7 +34,6 @@
         "symfony/phpunit-bridge": "^2.7"
     },
     "scripts": {
-
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
