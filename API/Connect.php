@@ -16,10 +16,9 @@ class Connect {
             $db = new PDO($dsn);
             // set the PDO error mode to exception
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Connected successfully";
             return $db;
         } catch (PDOException $e) {
-            return "Connection failed: " . $e->getMessage();
+            echo "Connection failed: " . $e->getMessage();
         }
     }
 }
