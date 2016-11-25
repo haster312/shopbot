@@ -2,7 +2,7 @@
 
 use AppBundle\Business\CategoryBusiness;
 use Doctrine\ORM\EntityManager;
-
+use AppBundle\Controller\CategoryController;
 class APIClass {
 
     public function getAllCategory() {
@@ -11,8 +11,8 @@ class APIClass {
     }
 }
 
-$apiClass = new APIClass();
-$category = $apiClass->getAllCategory();
+$apiClass = new CategoryController();
+$category = $apiClass->allCategoryAction();
 var_dump($category,'abc');exit;
 
 
