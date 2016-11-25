@@ -28,4 +28,5 @@ class Category {
      * @ORM\Column(type="boolean")
      */
     private $status__c;
+
 }
