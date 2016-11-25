@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends Controller {
 
-    public function allCategory() {
+    public function allCategoryAction() {
         var_dump('abc');exit;
     }
 }
