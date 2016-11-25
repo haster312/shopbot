@@ -1,7 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Haster
- * Date: 11/25/2016
- * Time: 12:30 AM
- */
+
+require('../vendor/autoload.php');
+
+$app = new Silex\Application();
+$app['debug'] = true;
+
+$app->get('/account/', function() use($app) {
+    echo "abc";
+});
