@@ -17,7 +17,7 @@ class Connect {
             echo "Connected successfully";
             return "Connected successfully";
         } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
+            return "Connection failed: " . $e->getMessage();
         }
     }
 }
