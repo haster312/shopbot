@@ -54,19 +54,14 @@ $bot->answer('@category', function($bot){
 	//Check the category list
 	$categories = [];
 	$aCategory = [
-        "title"     => "Lamborghini",
-        "image_url" => "http://pictures.topspeed.com/IMG/crop/201603/2016-lamborghini-centenar-5_800x0w.jpg",
-        "subtitle"  => "Amazing speed",
+        "title"     => "Iphone",
+        "image_url" => "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-6s-colors.jpg",
+        "subtitle"  => "Amazing smartphone",
         "buttons"   => [
             [
-                "type"  => "web_url",
-                "url"   => "https://lamborghini.com",
-                "title" => "Buy Now"
-            ],
-            [
                 "type"    => "postback",
-                "payload" => "BUY_LAMBORGHINI_TOMORROW",
-                "title"   => "Buy Tomorrow"
+                "payload" => "VIEW_DETAIL",
+                "title"   => "Detail"
             ]
         ]
     ];
