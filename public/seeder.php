@@ -10,7 +10,7 @@ if(!isset($bot)) $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 |
 */
 
-$bot->answer('hi', [
+$bot->answer('%hi%hello%fine%', [
 	'Hello [first_name]! I could help you with the following subjects:',
 	    'quick_replies' => [
         [
@@ -60,7 +60,7 @@ $bot->answer('@category', function($bot){
         "buttons"   => [
             [
                 "type"  	=> "payload",
-                "payload" 	=> "USER_CLICKED_DETAILED_BUTTON"
+                "payload" 	=> "USER_CLICKED_DETAILED_BUTTON",
                 "title" 	=> "Detail"
             ]
         ]
@@ -71,10 +71,10 @@ $bot->answer('@category', function($bot){
 });
 
 // Help
-$bot->answer('About Ebiz', 
+$bot->answer('About Ebiz', [
 	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries',
-	'Check our website for more detail: http://ebiz.solutions'
-	);
+	'Check our website for more detail: http://ebiz.solutions']
+);
 
 
 /*
