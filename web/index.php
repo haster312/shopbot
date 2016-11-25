@@ -25,12 +25,12 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 
 // Our web handlers
 
-$app->get('/web', function() use($app) {
+$app->get('/', function() use($app) {
     return "Home Page, Nothing Here!";
 });
 
 
-$app->get('/web/category', function() use($app) {
+$app->get('/category', function() use($app) {
 
 });
 
