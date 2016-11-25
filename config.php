@@ -167,18 +167,18 @@ return array(
 	'persistent_menu' => [
         [
             'type'      => 'postback',
-            'title'     => 'Help',
-            'payload'   => 'HELP'
-        ],
-        [
-            'type'      => 'postback',
             'title'     => 'Products',
-            'payload'   => 'SUBSCRIBE'
+            'payload'   => 'PRODUCT'
         ],
         [
             'type'      => 'event',
             'title'     => 'Events',
             'payload'	=> 'EVENT'
-        ]
+        ],
+        [
+            'type'      => 'postback',
+            'title'     => 'About Ebiz',
+            'payload'   => 'EBIZ'
+        ],
     ],
 );
