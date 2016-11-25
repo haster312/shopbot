@@ -67,7 +67,7 @@ $bot->answer('@category', function($bot){
     ];
     $categories[] = $aCategory;
     $categories[] = $aCategory;
-    return "{$categories}";
+    return $categories;
 });
 
 // Help
