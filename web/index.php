@@ -35,8 +35,7 @@ $app->get('/category', function() use($app) {
 });
 
 $app->get('/chatbot', function() use($app) {
-    var_dump('abc');
-    return dir('chatbot/index.php');
+    include "../chatbot/index.php";
 });
 
 $app->run();
