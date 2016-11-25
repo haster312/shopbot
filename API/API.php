@@ -11,12 +11,11 @@ class API {
         $db = Connect::ConnectDB();
         $query = "SELECT * FROM salesforce.category__c";
         $result = $db->query($query);
-        dd($result);
         $category = [];
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $category[] = $row;
         }
-
+        dd($category);
         return $category;
     }
 }
