@@ -1,3 +1,3 @@
 <?php
 require('vendor/autoload.php');
-var_dump('Test');exit;
+require('public/routes.php');
