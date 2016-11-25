@@ -1,7 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Haster
- * Date: 11/25/2016
- * Time: 11:39 PM
- */
+namespace AppBundle\Business;
+
+use Doctrine\ORM\EntityManager;
+
+class LeadBusiness {
+
+    public $entityManager;
+    public function __construct(EntityManager $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+    public function getAllCategory() {
+        $categories = $this->entityManager
+            ->getRepository('AppBundle:Category')
+            ->findAll();
+        return $categories;
+    }
+
+}

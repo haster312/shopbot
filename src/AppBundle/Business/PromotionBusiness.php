@@ -3,7 +3,7 @@ namespace AppBundle\Business;
 
 use Doctrine\ORM\EntityManager;
 
-class CategoryBusiness {
+class PromotionBusiness {
 
     public $entityManager;
     public function __construct(EntityManager $entityManager)
@@ -11,11 +11,11 @@ class CategoryBusiness {
         $this->entityManager = $entityManager;
     }
 
-    public function getAllCategory() {
-        $categories = $this->entityManager
-            ->getRepository('AppBundle:Category')
+    public function getAllPromotion() {
+        $promotion = $this->entityManager
+            ->getRepository('AppBundle:Promotion')
             ->findAll();
-        return $categories;
+        return $promotion;
     }
 
 }

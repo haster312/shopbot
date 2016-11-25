@@ -3,7 +3,7 @@ namespace AppBundle\Business;
 
 use Doctrine\ORM\EntityManager;
 
-class CategoryBusiness {
+class ProductOrderBusiness {
 
     public $entityManager;
     public function __construct(EntityManager $entityManager)
@@ -11,7 +11,7 @@ class CategoryBusiness {
         $this->entityManager = $entityManager;
     }
 
-    public function getAllCategory() {
+    public function getAllOrder() {
         $categories = $this->entityManager
             ->getRepository('AppBundle:Category')
             ->findAll();

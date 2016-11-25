@@ -3,7 +3,7 @@ namespace AppBundle\Business;
 
 use Doctrine\ORM\EntityManager;
 
-class CategoryBusiness {
+class ProductBusiness {
 
     public $entityManager;
     public function __construct(EntityManager $entityManager)
