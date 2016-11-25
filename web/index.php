@@ -32,7 +32,7 @@ $app->get('/', function() use($app) {
 
 $app->get('/category', function() use($app) {
     $category = API::getAllCategory();
-    var_dump($category);exit;
+    dd($category);
 });
 
 $app->run();
