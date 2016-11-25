@@ -1,7 +1,46 @@
 <?php
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 /**
- * Created by PhpStorm.
- * User: Haster
- * Date: 11/26/2016
- * Time: 12:53 AM
+ * @ORM\Entity
+ * @ORM\Table(name="salesforce.productorder__c")
  */
+class ProductOrder {
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $totalamount__c;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $ordernumber__c;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $description__c;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $status__c;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $leadid__c;
+}
