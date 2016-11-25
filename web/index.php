@@ -2,6 +2,7 @@
 
 require('../vendor/autoload.php');
 
+
 $app = new Silex\Application();
 $app['debug'] = true;
 $dbopts = parse_url(getenv('DATABASE_URL'));
@@ -14,7 +15,7 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
 );
 // Register the monolog logging service
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-  'monolog.logfile' => 'php://stderr',
+    'monolog.logfile' => 'php://stderr',
 ));
 
 // Register view rendering
@@ -25,23 +26,12 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 // Our web handlers
 
 $app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
+    return "Home Page, Nothing Here!";
 });
 
-$app->get('/account/', function() use($app) {
-    $st = $app['pdo']->prepare('SELECT name FROM salesforce.account');
-    $st->execute();
 
-    $names = array();
-    while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-        $app['monolog']->addDebug('Row ' . $row['name']);
-        $names[] = $row;
-    }
+$app->get('/category', function() use($app) {
 
-    return $app['twig']->render('contact/index.twig', array(
-        'names' => $names
-    ));
 });
 
 $app->run();
