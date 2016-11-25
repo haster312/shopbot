@@ -7,8 +7,9 @@ use AppBundle\Business\CategoryBusiness;
 class CategoryController extends Controller {
 
     public function allCategoryAction() {
-        $categoryBusiness = new CategoryBusiness();
-        $categories = $categoryBusiness->getAllCategory();
+        $categories = $this->getDoctrine()
+            ->getRepository('AppBundle:Category')
+            ->findAll();
         var_dump($categories);exit;
     }
 }
