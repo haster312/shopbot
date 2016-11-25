@@ -5,6 +5,7 @@ use AppBundle\Entity\Category;
 use Doctrine\ORM\EntityManager;
 class CategoryBusiness {
 
+    public $manager;
     public function __construct(EntityManager $manager)
     {
         $this->manager = $manager;
@@ -14,7 +15,6 @@ class CategoryBusiness {
         $categories = $this->manager
             ->getRepository('AppBundle:Category')
             ->findAll();
-        var_dump($categories,'abc');exit;
         return $categories;
     }
 }
