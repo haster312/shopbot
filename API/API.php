@@ -14,9 +14,10 @@ class API {
     }
 
     public static function getCategory() {
-        var_dump('abc');exit;
+        var_dump(API::$db);exit;
         $query = "SELECT * FROM salesforce.category__c";
         $result = API::$db->query($query);
+
         $category = [];
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $category[] = $row;
