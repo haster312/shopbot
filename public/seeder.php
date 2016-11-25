@@ -54,20 +54,32 @@ $bot->answer('@category', function($bot){
 	//Check the category list
 	$categories = [];
 	$aCategory = [
-        "title"     => "Iphone",
-        "image_url" => "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-6s-colors.jpg",
-        "subtitle"  => "The iPhones",
-        "buttons"   => [
-            [
-                "type"  	=> "payload",
-                "payload" 	=> "USER_CLICKED_DETAILED_BUTTON",
-                "title" 	=> "Detail"
+        [
+            "title"     => "Iphone",
+            "image_url" => "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-6s-colors.jpg",
+            "subtitle"  => "The iPhones",
+            "buttons"   => [
+                [
+                    "type"  	=> "payload",
+                    "payload" 	=> "USER_CLICKED_DETAILED_BUTTON",
+                    "title" 	=> "Detail"
+                ]
+            ]
+        ],
+        [
+            "title"     => "Iphone",
+            "image_url" => "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-6s-colors.jpg",
+            "subtitle"  => "The iPhones",
+            "buttons"   => [
+                [
+                    "type"      => "payload",
+                    "payload"   => "USER_CLICKED_DETAILED_BUTTON",
+                    "title"     => "Detail"
+                ]
             ]
         ]
     ];
-    $categories[] = $aCategory;
-    $categories[] = $aCategory;
-    return $categories;
+    return $aCategory;
 });
 
 // Help
