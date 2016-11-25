@@ -63,6 +63,15 @@ return array(
         'collation' => 'utf8_unicode_ci',
         'prefix'    => '',
     ],
+//    'mysql' => [
+//        'host'      => '127.0.0.1',
+//        'database'  => 'd1',
+//        'username'  => 'root',
+//        'password'  => '',
+//        'charset'   => 'utf8',
+//        'collation' => 'utf8_unicode_ci',
+//        'prefix'    => '',
+//    ],
 
     'pgsql' => [
         'host'      => 'ec2-54-235-65-139.compute-1.amazonaws.com',
@@ -125,7 +134,7 @@ return array(
 	 |
 	 */
 
-	'greeting_text' => 'Welcome to my Page!',
+	'greeting_text' => 'Welcome to Ebiz Store!',
 
 	/*
 	 |------------------------------------------------------------------------
