@@ -25,7 +25,7 @@ class CategoryBusiness extends Business
         new static;
 
         $category = Category::find($categoryId);
-        return $category;
+        return $category->toArray();
     }
 
     public static function getProducts($categoryId, $length = null, $page = null){
