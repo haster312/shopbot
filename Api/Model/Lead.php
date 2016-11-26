@@ -7,6 +7,7 @@ class Lead extends Model {
 
     public $table = "salesforce.lead";
     protected $fillable = [
-        'name', 'firstname' , 'lastname', 'facebookid__c',
+        'name', 'firstname' , 'lastname', 'title', 'facebookid__c', 'description', 'phone',
+        'email' , 'status', 'city', 'country', 'postalcode', 'website', 'company', 'photourl'
     ];
 }
