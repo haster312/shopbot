@@ -1,4 +1,10 @@
 <?php
+use \AppBundle\Entity\Category;
+use \AppBundle\Entity\Lead;
+use \AppBundle\Entity\Product;
+use \AppBundle\Entity\ProductOrder;
+use \AppBundle\Entity\Promotion;
+
 $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 
 /*
@@ -10,7 +16,7 @@ $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 |
 */
 
-$bot->answer('^(nice|good|great)(.*)man$', [
+$bot->answer('^(hi|hello|fine)', [
 	'Hello [first_name]! I could help you with the following items',
     'quick_replies' => [
         [
@@ -87,7 +93,7 @@ $bot->answer('default:', 'Sorry I\'m not understand. You could check the Menu fo
 
 // Other
 $bot->answer([
-    'thank you'                 => 'It been my pleasure!',
+    '^(thank|thank you)'                 => 'It been my pleasure!',
     'you%funny%'                => 'I don\'t think so :)',
     '^(bad|bitch)(.*)girl$'     => 'Sorry but it is my best'
 ]);
