@@ -51,7 +51,6 @@ $bot->answer('payload:USER_TAPPED_EVENT', function() {
 $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
     //Check the category list
     $hCategories = \Api\Business\CategoryBusiness::getAllCategories();
-    return 'count: ' . $hCategories->count();
 
     $mix = [];
     $mix[] = 'We have some kind of product lines for you.';
@@ -60,20 +59,20 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
     /* @var $hCategory Category */
     foreach ($hCategories as $hCategory){
         $aCategory = [
-            "title"     => $hCategory->name,
-            "image_url" => $hCategory->imageurl__c,
-            "subtitle"  => $hCategory->description__c,
+            "title"     => $hCategory['name'],
+            "image_url" => $hCategory['imageurl__c'],
+            "subtitle"  => $hCategory['description__c'],
             "buttons"   => [
                 [
                     "type"    => "postback",
-                    "payload" => "cat_" . $hCategory->id,
+                    "payload" => "cat_" . $hCategory['id'],
                     "title"   => "Detail"
                 ]
             ]
         ];
         $categories[] = $aCategory;
         //Register a new node for postback
-        $bot->answer('payload:cat_' . $hCategory->id, function(){
+        $bot->answer('payload:cat_' . $hCategory['id'], function(){
             //Get category product
             return 'Sorry, there is no product in this category at the moment';
         });
