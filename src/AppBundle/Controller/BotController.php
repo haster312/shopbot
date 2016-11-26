@@ -26,6 +26,7 @@ class BotController extends Controller {
      * Seeder action
      */
     public function indexAction() {
+        var_dump('bot');exit;
         $bot = require_once __DIR__ . '/../../../bootstrap/bot.php';
 
         /*
