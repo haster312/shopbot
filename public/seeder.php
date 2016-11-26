@@ -72,9 +72,9 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
         ];
         $categories[] = $aCategory;
         //Register a new node for postback
-        $bot->answer('payload:cat_' . $hCategory['id'], function(){
+        $bot->answer('payload:cat_' . $hCategory['id'], function($bot){
             //Get category product
-            return 'Sorry, there is no product in this category at the moment';
+            $bot->say('Sorry, there is no product in this category at the moment');
         });
     }
     $mix[] = $categories;
