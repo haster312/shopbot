@@ -17,7 +17,7 @@ class BotController extends Controller {
 //     * BotController constructor.
 //     * @param EntityManager $em
 //     */
-//    private function __construct(EntityManager $em)
+//    private function __construct()
 //    {
 //        $this->em = $em;
 //    }
