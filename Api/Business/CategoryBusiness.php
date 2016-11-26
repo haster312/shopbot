@@ -8,7 +8,7 @@ class CategoryBusiness extends Business
     public static function getAllCategories($length = null, $page = null){
         new static;
 
-        $categories = Category::select('*');
+       // $categories = Category::select('*');
 //        if($length > 0) {
 //            $categories->limit($length);
 //        }
@@ -17,6 +17,6 @@ class CategoryBusiness extends Business
 //            $offset = $length * $page;
 //            $categories->offset($offset);
 //        }
-        return $categories->get();
+        return Category::all();
     }
 }
