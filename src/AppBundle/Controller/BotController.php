@@ -76,9 +76,9 @@ class BotController extends Controller {
         });
 
         // Products
-        $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
+        $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot, $em) {
             //Check the category list
-            $hCategories = $this->em->getRepository('AppBundle:Category')->getCategories();
+            $hCategories = $em->getRepository('AppBundle:Category')->getCategories();
 
             $mix = [];
             $mix[] = 'We have some kind of product lines for you.';
@@ -88,8 +88,8 @@ class BotController extends Controller {
             foreach ($hCategories as $hCategory){
                 $aCategory = [
                     "title"     => $hCategory->name,
-                    "image_url" => $hCategory->imageUrl,
-                    "subtitle"  => $hCategory->description,
+                    "image_url" => $hCategory->imageurl__c,
+                    "subtitle"  => $hCategory->description__c,
                     "buttons"   => [
                         [
                             "type"    => "postback",
