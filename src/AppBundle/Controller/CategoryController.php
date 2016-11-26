@@ -11,8 +11,10 @@ class CategoryController extends Controller {
 
     public function allCategoryAction() {
         $em = $this->getDoctrine()->getManager();
-        $categories = $em->getRepository('AppBundle:Category')
+        $categories   = $em->getRepository('AppBundle:Category')
             ->getCategories();
-        return new JsonResponse($categories);
+        $productOrder = $em->getRepository('AppBundle:ProductOrder')
+            ->getProductOrderById(1);
+        return new JsonResponse($productOrder);
     }
 }
