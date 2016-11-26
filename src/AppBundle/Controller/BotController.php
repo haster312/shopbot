@@ -70,34 +70,7 @@ class BotController extends Controller {
             catch(Exception $e){
                 return $e->getMessage();
             }
-
-            $mix = [];
-            $mix[] = 'We have some kind of product lines for you.';
-            $categories = [];
-
-            /* @var $hCategory Category */
-            foreach ($hCategories as $hCategory){
-                $aCategory = [
-                    "title"     => $hCategory->name,
-                    "image_url" => $hCategory->imageurl__c,
-                    "subtitle"  => $hCategory->description__c,
-                    "buttons"   => [
-                        [
-                            "type"    => "postback",
-                            "payload" => "cat_" . $hCategory->id,
-                            "title"   => "Detail"
-                        ]
-                    ]
-                ];
-                $categories[] = $aCategory;
-                //Register a new node for postback
-                $bot->answer('payload:cat_' . $hCategory->id, function(){
-                    //Get category product
-                    return 'Sorry, there is no product in this category at the moment';
-                });
-            }
-            $mix[] = $categories;
-            return $mix;
+            return "".$hCategories;
         });
 
         // About Ebiz
