@@ -18,16 +18,16 @@ class CategoryRepository extends EntityRepository {
         $query->select('category')
               ->from('AppBundle:Category','category');
 
-        if($length) {
-            $query->setMaxResults($length);
-        }
+//        if($length) {
+//            $query->setMaxResults($length);
+//        }
+//
+//        if($page) {
+//            $offset = $length * $page;
+//            $query->setFirstResult($offset);
+//        }
 
-        if($page) {
-            $offset = $length * $page;
-            $query->setFirstResult($offset);
-        }
-
-        $categories = $query->getQuery()->getResult();
+        $categories = $query->getQuery()->getArrayResult();
         return $categories;
     }
 
