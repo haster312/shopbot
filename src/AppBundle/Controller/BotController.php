@@ -8,24 +8,25 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Category;
 
 class BotController extends Controller {
-    /**
-     * @var EntityManager
-     */
-    private $em;
-
-    /**
-     * BotController constructor.
-     * @param EntityManager $em
-     */
-    private function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
+//    /**
+//     * @var EntityManager
+//     */
+//    private $em;
+//
+//    /**
+//     * BotController constructor.
+//     * @param EntityManager $em
+//     */
+//    private function __construct(EntityManager $em)
+//    {
+//        $this->em = $em;
+//    }
 
     /**
      * Seeder action
      */
     public function indexAction() {
+        $em = $this->getDoctrine()->getManager();
         var_dump('bot');exit;
         $bot = require_once __DIR__ . '/../../../bootstrap/bot.php';
 
