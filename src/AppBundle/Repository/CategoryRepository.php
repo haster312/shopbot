@@ -50,10 +50,10 @@ class CategoryRepository extends EntityRepository {
     public function getProducts($categoryId, $length = null, $page = null){
 
         $query = $this->getEntityManager()->createQueryBuilder();
-
+        $category = $this->getCategoryById($categoryId);
         $query->select('product')
             ->from('AppBundle:Product','product')
-            ->where('product.category__c');
+            ->where('product.category__c = '.$category[0]['sfid']);
         if($length) {
             $query->setMaxResults($length);
         }
@@ -63,5 +63,7 @@ class CategoryRepository extends EntityRepository {
             $query->setFirstResult($offset);
         }
 
+        $products = $query->getQuery()->getArrayResult();
+        return $products;
     }
 }
