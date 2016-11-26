@@ -1,5 +1,3 @@
 <?php
-
-$categories = \Api\Business\CategoryBusiness::getAllCategories();
-
-dd($categories);
+use Api\Business\CategoryBusiness;
+dd('abc');
