@@ -27,7 +27,6 @@ class BotController extends Controller {
      */
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
-        var_dump('bot');exit;
         $bot = require_once __DIR__ . '/../../../bootstrap/bot.php';
 
         /*
