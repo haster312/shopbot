@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 require  "Connect.php";
-class API {
+class Api {
 
     /**
      * Get all Salesforce category with limit
