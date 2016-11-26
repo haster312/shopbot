@@ -8,7 +8,8 @@ class CategoryBusiness extends Business
     public static function getAllCategories($length = null, $page = null){
         new static;
 
-        $categories = new Category();
+        $query = new Category();
+        $categories = $query->select('*');
         if($length > 0) {
             $categories->limit($length);
         }
