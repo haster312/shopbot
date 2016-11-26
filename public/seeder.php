@@ -51,7 +51,7 @@ $bot->answer('payload:USER_TAPPED_EVENT', function() {
 $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
     //Check the category list
     $hCategories = \Api\Business\CategoryBusiness::getAllCategories();
-    return '' . $hCategories;
+    return '' . json_encode($hCategories[0]);
 
     $mix = [];
     $mix[] = 'We have some kind of product lines for you.';
