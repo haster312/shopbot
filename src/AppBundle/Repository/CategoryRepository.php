@@ -27,7 +27,7 @@ class CategoryRepository extends EntityRepository {
             $query->setFirstResult($offset);
         }
 
-        $categories = $query->getQuery()->getResult();
+        $categories = $query->getQuery()->getArrayResult();
         return $categories;
     }
 
@@ -62,5 +62,6 @@ class CategoryRepository extends EntityRepository {
             $offset = $length * $page;
             $query->setFirstResult($offset);
         }
+
     }
 }

@@ -11,7 +11,7 @@ class CategoryController extends Controller {
 
     public function allCategoryAction() {
         $em = $this->getDoctrine()->getManager();
-        $categories   = $em->getRepository('AppBundle:Category')->getCategories();
+        $categories  = $em->getRepository('AppBundle:Category')->getCategories();
         var_dump($categories);exit;
         return new JsonResponse($categories);
     }
