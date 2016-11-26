@@ -64,12 +64,12 @@ class BotController extends Controller {
         // Products
         $bot->answer('payload:USER_TAPPED_PRODUCT', function() {
             //Check the category list
-            $hCategories = "Could not do this";
+            $hCategories = $this->has('asfs');
             return "".$hCategories;
         });
 
         // About Ebiz
-        $bot->answer(['payload:USER_TAPPED_ABOUT'], [
+        $bot->answer('payload:USER_TAPPED_ABOUT', [
                 'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries',
                 'Check our website for more detail: http://ebiz.solutions']
         );
