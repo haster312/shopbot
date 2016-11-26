@@ -62,14 +62,9 @@ class BotController extends Controller {
         });
 
         // Products
-        $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
+        $bot->answer('payload:USER_TAPPED_PRODUCT', function() {
             //Check the category list
-            try {
-                $hCategories = $this->getDoctrine()->getManager()->getRepository('AppBundle:Category')->getCategories();
-            }
-            catch(Exception $e){
-                return $e->getMessage();
-            }
+            $hCategories = $this->getDoctrine()->getManager()->getRepository('AppBundle:Category')->getCategories();
             return "".$hCategories;
         });
 
