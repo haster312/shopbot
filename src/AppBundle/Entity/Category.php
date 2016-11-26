@@ -37,7 +37,8 @@ class Category {
      * @return array
      */
     public function getCategories($length = null, $page = null){
-
+        $categories = $this->findAll();
+        return $categories;
     }
 
     /**
