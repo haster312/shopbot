@@ -43,5 +43,5 @@ class Product {
     /**
      * @ORM\Column(type="string")
      */
-    public $imageUrl;
+    public $imageurl__c;
 }

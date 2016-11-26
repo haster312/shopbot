@@ -33,11 +33,11 @@ class Category {
     /**
      * @ORM\Column(type="string")
      */
-    public $imageUrl;
+    public $imageurl__c;
 
     /**
      * @ORM\Column(type="text")
      */
-    public $description;
+    public $description__c;
 
 }
