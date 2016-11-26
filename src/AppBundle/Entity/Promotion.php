@@ -33,4 +33,22 @@ class Promotion {
      * @ORM\Column(type="string")
      */
     private $promotionproduct__c;
+
+    /**
+     * Get all current promotion
+     * @return array
+     */
+    public function getCurrentPromotions(){
+
+    }
+
+    /**
+     * @param $promotionId
+     * @param null $length
+     * @param null $page
+     * @return array
+     */
+    public function getProducts($promotionId, $length = null, $page = null){
+
+    }
 }

@@ -79,4 +79,21 @@ class Lead {
      */
     private $postalcode;
 
+    /**
+     * Get Lead By FacebookId
+     * @param $facebookId
+     * @return Lead
+     */
+    public function getLeadByFacebookId($facebookId){
+
+    }
+
+    /**
+     * Update Lead by new Lead information
+     * @param $facebookId
+     * @param Lead $newLead
+     */
+    public function updateLead($facebookId, Lead $newLead){
+
+    }
 }

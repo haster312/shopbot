@@ -43,4 +43,13 @@ class ProductOrder {
      * @ORM\Column(type="integer")
      */
     private $leadid__c;
+
+    /**
+     * Order product
+     * @param $productId
+     * @return boolean - success or fail
+     */
+    public function orderProduct($productId){
+
+    }
 }

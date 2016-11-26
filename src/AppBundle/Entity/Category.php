@@ -29,4 +29,23 @@ class Category {
      */
     private $status__c;
 
+    /**
+     * Get all category
+     * @param null $length
+     * @param null $page
+     * @return array
+     */
+    public function getCategories($length = null, $page = null){
+
+    }
+
+    /**
+     * @param $categoryId
+     * @param null $length
+     * @param null $page
+     * @return array
+     */
+    public function getProducts($categoryId, $length = null, $page = null){
+
+    }
 }
