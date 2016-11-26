@@ -37,7 +37,7 @@ class CategoryRepository extends EntityRepository {
             ->createQuery(
                 "SELECT category FROM AppBundle:Category category where category.id = $categoryId"
             )
-            ->getSingleResult();
+            ->getArrayResult();
         return $category;
     }
 
