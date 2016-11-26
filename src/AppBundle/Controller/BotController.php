@@ -8,25 +8,24 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Category;
 
 class BotController extends Controller {
-//    /**
-//     * @var EntityManager
-//     */
-//    private $em;
-//
-//    /**
-//     * BotController constructor.
-//     * @param EntityManager $em
-//     */
-//    private function __construct(EntityManager $em)
-//    {
-//        $this->em = $em;
-//    }
+    /**
+     * @var EntityManager
+     */
+    private $em;
+
+    /**
+     * BotController constructor.
+     * @param EntityManager $em
+     */
+    private function __construct()
+    {
+        $this->em = $this->getDoctrine()->getManager();;
+    }
 
     /**
      * Seeder action
      */
     public function indexAction() {
-        $em = $this->getDoctrine()->getManager();
         $bot = require_once __DIR__ . '/../../../bootstrap/bot.php';
 
         /*
@@ -76,9 +75,9 @@ class BotController extends Controller {
         });
 
         // Products
-        $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot, $em) {
+        $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
             //Check the category list
-            $hCategories = $em->getRepository('AppBundle:Category')->getCategories();
+            $hCategories = $this->em->getRepository('AppBundle:Category')->getCategories();
 
             $mix = [];
             $mix[] = 'We have some kind of product lines for you.';
