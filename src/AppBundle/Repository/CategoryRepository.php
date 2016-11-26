@@ -11,7 +11,7 @@ class CategoryRepository extends EntityRepository {
      * @param null $page
      * @return array
      */
-    public function getCategories($length = null, $page = null){
+    public function getCategories($length = 0, $page = 0){
 
         $skip = $length * $page;
         $limit  = "";
