@@ -10,3 +10,6 @@ lead:
 product:
     path:      /product
     defaults:  { _controller: AppBundle:Product:allCategory }
+bot:
+    path:      /bot
+    defaults:  { _controller: AppBundle:Bot:index }
