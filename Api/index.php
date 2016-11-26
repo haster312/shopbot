@@ -1,3 +1,5 @@
 <?php
+use Api\Business\CategoryBusiness;
 
-dd('abc');
+$categories = CategoryBusiness::getAllCategories();
+var_dump('abc');
