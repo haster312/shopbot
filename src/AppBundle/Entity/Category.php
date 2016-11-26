@@ -31,17 +31,6 @@ class Category {
 
 
     /**
-     * Get all category
-     * @param null $length
-     * @param null $page
-     * @return array
-     */
-    public function getCategories($length = null, $page = null){
-        $categories = $this->findAll();
-        return $categories;
-    }
-
-    /**
      * @param $categoryId
      * @param null $length
      * @param null $page

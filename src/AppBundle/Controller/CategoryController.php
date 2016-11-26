@@ -10,8 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 class CategoryController extends Controller {
 
     public function allCategoryAction() {
-        $category = new Category();
-        $categories = $category->getCategories();
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('AppBundle:Category')
+            ->getCategories();
         return new JsonResponse($categories);
     }
 }
