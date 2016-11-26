@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Category;
 
@@ -26,7 +27,6 @@ class BotController extends Controller {
      * Seeder action
      */
     public function indexAction() {
-        $em = $this->getDoctrine()->getManager();
         $bot = require_once __DIR__ . '/../../../bootstrap/bot.php';
 
         /*
@@ -76,41 +76,14 @@ class BotController extends Controller {
         });
 
         // Products
-        $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
+        $bot->answer('payload:USER_TAPPED_PRODUCT', function() {
             //Check the category list
-            $hCategories = $this->em->getRepository('AppBundle:Category')->getCategories();
-
-            $mix = [];
-            $mix[] = 'We have some kind of product lines for you.';
-            $categories = [];
-
-            /* @var $hCategory Category */
-            foreach ($hCategories as $hCategory){
-                $aCategory = [
-                    "title"     => $hCategory->name,
-                    "image_url" => $hCategory->imageUrl,
-                    "subtitle"  => $hCategory->description,
-                    "buttons"   => [
-                        [
-                            "type"    => "postback",
-                            "payload" => "cat_" . $hCategory->id,
-                            "title"   => "Detail"
-                        ]
-                    ]
-                ];
-                $categories[] = $aCategory;
-                //Register a new node for postback
-                $bot->answer('payload:cat_' . $hCategory->id, function(){
-                    //Get category product
-                    return 'Sorry, there is no product in this category at the moment';
-                });
-            }
-            $mix[] = $categories;
-            return $mix;
+            $hCategories = $this->has('asfs');
+            return "".$hCategories;
         });
 
         // About Ebiz
-        $bot->answer(['payload:USER_TAPPED_ABOUT'], [
+        $bot->answer('payload:USER_TAPPED_ABOUT', [
                 'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries',
                 'Check our website for more detail: http://ebiz.solutions']
         );
