@@ -9,20 +9,6 @@ use AppBundle\Entity\Category;
 
 class BotController extends Controller {
     /**
-     * @var EntityManager
-     */
-    private $em;
-
-    /**
-     * BotController constructor.
-     * @param EntityManager $em
-     */
-    private function __construct()
-    {
-        $this->em = $this->getDoctrine()->getManager();
-    }
-
-    /**
      * Seeder action
      */
     public function indexAction() {
@@ -77,7 +63,7 @@ class BotController extends Controller {
         // Products
         $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
             //Check the category list
-            $hCategories = $this->em->getRepository('AppBundle:Category')->getCategories();
+            $hCategories = $this->getDoctrine()->getManager()->getRepository('AppBundle:Category')->getCategories();
 
             $mix = [];
             $mix[] = 'We have some kind of product lines for you.';
