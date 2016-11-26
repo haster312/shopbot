@@ -51,6 +51,7 @@ class CategoryRepository extends EntityRepository {
 
         $query = $this->getEntityManager()->createQueryBuilder();
         $category = $this->getCategoryById($categoryId);
+        var_dump($category);exit;
         $query->select('product')
             ->from('AppBundle:Product','product')
             ->where('product.category__c = '.$category[0]['sfid']);
