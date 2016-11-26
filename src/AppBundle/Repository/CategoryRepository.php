@@ -12,9 +12,22 @@ class CategoryRepository extends EntityRepository {
      * @return array
      */
     public function getCategories($length = null, $page = null){
+
+        $skip = $length * $page;
+        $limit  = "";
+        $offset = "";
+
+        if($length > 0) {
+            $limit = " limit $length";
+        }
+
+        if($skip > 0) {
+            $offset = " offset $offset";
+        }
+
         $categories = $this->getEntityManager()
             ->createQuery(
-                'SELECT category FROM AppBundle:Category category'
+                "SELECT category FROM AppBundle:Category category" . $limit . $offset
             )
             ->getResult();
         return $categories;
@@ -22,6 +35,12 @@ class CategoryRepository extends EntityRepository {
 
     public function getCategoryById($categoryId) {
 
+        $category = $this->getEntityManager()
+            ->createQuery(
+                "SELECT category FROM AppBundle:Category category where category.id = $categoryId"
+            )
+            ->getSingleResult();
+        return $category;
     }
 
     /**
