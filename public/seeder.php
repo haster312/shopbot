@@ -71,14 +71,11 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
             ]
         ];
         $categories[] = $aCategory;
-        //Register a new node for postback
-        $bot->answer('payload:cat_' . $hCategory['id'], function($bot){
-            //Get category product
-            $bot->say('Sorry, there is no product in this category at the moment');
-        });
     }
     $mix[] = $categories;
     return $mix;
+})->then(function ($bot, $lead_id, $input){
+    return "asgsg" . $input;
 });
 
 // About Ebiz
