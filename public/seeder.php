@@ -1,6 +1,4 @@
 <?php
-use Api\Business\CityBusiness;
-
 $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 
 /*
@@ -11,7 +9,6 @@ $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 | Let's try say hi to her when setup completed and then edit this message.
 |
 */
-$cities = CityBusiness::getAllCities();
 
 $bot->answer('^(hi|hello|fine)', [
 	'Hello [first_name]! I could help you with the following items',
@@ -52,36 +49,36 @@ $bot->answer('payload:USER_TAPPED_EVENT', function() {
 
 // Products
 $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
-//    //Check the category list
-//    $hCategories = (new CategoryRepository())->getCategories();
-//
-//    $mix = [];
-//    $mix[] = 'We have some kind of product lines for you.';
-//    $categories = [];
-//
-//    /* @var $hCategory Category */
-//    foreach ($hCategories as $hCategory){
-//        $aCategory = [
-//            "title"     => $hCategory->name,
-//            "image_url" => $hCategory->imageUrl,
-//            "subtitle"  => $hCategory->description,
-//            "buttons"   => [
-//                [
-//                    "type"    => "postback",
-//                    "payload" => "cat_" . $hCategory->id,
-//                    "title"   => "Detail"
-//                ]
-//            ]
-//        ];
-//        $categories[] = $aCategory;
-//        //Register a new node for postback
-//        $bot->answer('payload:cat_' . $hCategory->id, function(){
-//            //Get category product
-//            return 'Sorry, there is no product in this category at the moment';
-//        });
-//    }
-//    $mix[] = $categories;
-//    return $mix;
+    //Check the category list
+    $hCategories = \Api\Business\CategoryBusiness::getAllCategories();
+
+    $mix = [];
+    $mix[] = 'We have some kind of product lines for you.';
+    $categories = [];
+
+    /* @var $hCategory Category */
+    foreach ($hCategories as $hCategory){
+        $aCategory = [
+            "title"     => $hCategory->name,
+            "image_url" => $hCategory->imageurl__c,
+            "subtitle"  => $hCategory->description__c,
+            "buttons"   => [
+                [
+                    "type"    => "postback",
+                    "payload" => "cat_" . $hCategory->id,
+                    "title"   => "Detail"
+                ]
+            ]
+        ];
+        $categories[] = $aCategory;
+        //Register a new node for postback
+        $bot->answer('payload:cat_' . $hCategory->id, function(){
+            //Get category product
+            return 'Sorry, there is no product in this category at the moment';
+        });
+    }
+    $mix[] = $categories;
+    return $mix;
 });
 
 // About Ebiz
