@@ -18,11 +18,11 @@ class CategoryRepository extends EntityRepository {
         $offset = "";
 
         if($length > 0) {
-            $limit = " limit $length";
+            $limit = " LIMIT $length";
         }
 
         if($skip > 0) {
-            $offset = " offset $offset";
+            $offset = " OFFSET $offset";
         }
 
         $categories = $this->getEntityManager()
