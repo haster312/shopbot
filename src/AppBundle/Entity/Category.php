@@ -4,6 +4,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="salesforce.category__c")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  */
 class Category {
 
@@ -29,16 +30,6 @@ class Category {
      */
     public $status__c;
 
-
-    /**
-     * Get all category
-     * @param null $length
-     * @param null $page
-     * @return array
-     */
-    public function getCategories($length = null, $page = null){
-
-    }
 
     /**
      * @param $categoryId

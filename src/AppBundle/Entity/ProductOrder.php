@@ -4,6 +4,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="salesforce.productorder__c")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductOrderRepository")
  */
 class ProductOrder {
 
@@ -44,12 +45,4 @@ class ProductOrder {
      */
     public $leadid__c;
 
-    /**
-     * Order product
-     * @param $productId
-     * @return boolean - success or fail
-     */
-    public function orderProduct($productId){
-
-    }
 }
