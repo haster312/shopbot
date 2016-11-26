@@ -12,71 +12,71 @@ class Lead {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $name;
+    public $name;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $fistname;
+    public $fistname;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $lastname;
+    public $lastname;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $facebookid__c;
+    public $facebookid__c;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $phone;
+    public $phone;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $email;
+    public $email;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $company;
+    public $company;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $website;
+    public $website;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    public $description;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $city;
+    public $city;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $state;
+    public $state;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $country;
+    public $country;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $postalcode;
+    public $postalcode;
 
 }

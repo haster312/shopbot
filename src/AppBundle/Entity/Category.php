@@ -12,22 +12,22 @@ class Category {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $sfid;
+    public $sfid;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $name;
+    public $name;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $status__c;
+    public $status__c;
 
 
 }

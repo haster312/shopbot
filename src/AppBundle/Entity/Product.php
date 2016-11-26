@@ -12,30 +12,30 @@ class Product {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $sfid;
+    public $sfid;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $productcode;
+    public $productcode;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $name;
+    public $name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    public $description;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $category__c;
+    public $category__c;
 }

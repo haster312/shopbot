@@ -12,35 +12,35 @@ class ProductOrder {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $name;
+    public $name;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $totalamount__c;
+    public $totalamount__c;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $ordernumber__c;
+    public $ordernumber__c;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $description__c;
+    public $description__c;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $status__c;
+    public $status__c;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $leadid__c;
+    public $leadid__c;
 }
