@@ -75,7 +75,7 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
     $mix[] = $categories;
     return $mix;
 })->then(function ($bot, $lead_id, $input){
-    return $input;
+    return "asgsg" . $input;
 });
 
 // About Ebiz
