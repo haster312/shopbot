@@ -19,4 +19,18 @@ class CategoryRepository extends EntityRepository {
             ->getResult();
         return $categories;
     }
+
+    public function getCategoryById($categoryId) {
+
+    }
+
+    /**
+     * @param $categoryId
+     * @param null $length
+     * @param null $page
+     * @return array
+     */
+    public function getProducts($categoryId, $length = null, $page = null){
+
+    }
 }
