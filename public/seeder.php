@@ -2,7 +2,6 @@
 use Api\Business\CityBusiness;
 
 $bot = require_once __DIR__ . '/../bootstrap/bot.php';
-require_once __DIR__ . '/../Api/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
