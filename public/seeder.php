@@ -12,7 +12,6 @@ $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 |
 */
 $cities = CityBusiness::getAllCities();
-dd($cities);
 
 $bot->answer('^(hi|hello|fine)', [
 	'Hello [first_name]! I could help you with the following items',
