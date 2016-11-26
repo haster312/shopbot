@@ -20,7 +20,7 @@ class Connection{
     {
         $this->db = new Capsule;
 
-        $url = "postgres://trdczucnrhrtaf:-Ck0ag6FHo_ASToRoNxzntymnT@ec2-54-243-203-232.compute-1.amazonaws.com:5432/d4fumq7k3caj6v";
+        $url = parse_url(getenv('DATABASE_URL'));
 
         $this->db->addConnection([
             'driver'    => 'pgsql',
