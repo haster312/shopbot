@@ -13,8 +13,7 @@ class CategoryController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $categories   = $em->getRepository('AppBundle:Category')
             ->getCategories();
-        $productOrder = $em->getRepository('AppBundle:ProductOrder')
-            ->getProductOrderById(1);
-        return new JsonResponse($productOrder);
+        var_dump($categories);exit;
+        return new JsonResponse($categories);
     }
 }
