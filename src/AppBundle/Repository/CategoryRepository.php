@@ -14,7 +14,7 @@ class CategoryRepository extends EntityRepository {
     public function getCategories($length = null, $page = null){
         $categories = $this->getEntityManager()
             ->createQuery(
-                'SELECT * FROM AppBundle:Product'
+                'SELECT category FROM AppBundle:Category category'
             )
             ->getResult();
         return $categories;
