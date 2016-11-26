@@ -12,11 +12,22 @@ class CategoryRepository extends EntityRepository {
      * @return array
      */
     public function getCategories($length = null, $page = null){
-        $categories = $this->getEntityManager()
-            ->createQuery(
-                'SELECT category FROM AppBundle:Category category'
-            )
-            ->getResult();
+
+        $query = $this->getEntityManager()->createQueryBuilder();
+
+        $query->select('category')
+              ->from('AppBundle:Category','category');
+
+        if($length) {
+            $query->setMaxResults($length);
+        }
+
+        if($page) {
+            $offset = $length * $page;
+            $query->setFirstResult($offset);
+        }
+
+        $categories = $query->getQuery()->getArrayResult();
         return $categories;
     }
 
@@ -37,6 +48,20 @@ class CategoryRepository extends EntityRepository {
      * @return array
      */
     public function getProducts($categoryId, $length = null, $page = null){
+
+        $query = $this->getEntityManager()->createQueryBuilder();
+
+        $query->select('product')
+            ->from('AppBundle:Product','product')
+            ->where('product.category__c');
+        if($length) {
+            $query->setMaxResults($length);
+        }
+
+        if($page) {
+            $offset = $length * $page;
+            $query->setFirstResult($offset);
+        }
 
     }
 }
