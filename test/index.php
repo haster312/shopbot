@@ -4,5 +4,4 @@ use Api\Business\CategoryBusiness;
 
 $categories = CategoryBusiness::getAllCategories(1,0);
 $product = CategoryBusiness::getProducts(1);
-var_dump($categories);
-var_dump($product);
+var_dump($categories, $product);
