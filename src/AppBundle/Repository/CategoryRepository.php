@@ -14,22 +14,21 @@ class CategoryRepository extends EntityRepository {
     public function getCategories($length = 0, $page = 0){
 
         $skip = $length * $page;
-        $limit  = "";
-        $offset = "";
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                "SELECT category FROM AppBundle:Category category"
+            );
 
         if($length > 0) {
-            $limit = " LIMIT $length";
+            $query->setMaxResults($length);
         }
 
         if($skip > 0) {
-            $offset = " OFFSET $offset";
+            $query->setFirstResult($skip);
         }
 
-        $categories = $this->getEntityManager()
-            ->createQuery(
-                "SELECT category FROM AppBundle:Category category" . $limit . $offset
-            )
-            ->getResult();
+        $categories = $query->getResult();
         return $categories;
     }
 
