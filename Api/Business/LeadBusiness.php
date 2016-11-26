@@ -1,7 +1,32 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Haster
- * Date: 11/26/2016
- * Time: 10:55 PM
- */
+namespace Api\Business;
+
+use Api\Model\Lead;
+
+class LeadBusiness extends Business {
+
+    /**
+     * Get Lead By FacebookId
+     * @param $facebookId
+     * @return Lead
+     */
+    public function getLeadByFacebookId($facebookId){
+        new static;
+
+        $lead = Lead::where('facebookid__c',$facebookId)->first();
+        if ($lead)
+            return $lead->toArray();
+        else
+            return null;
+    }
+
+    /**
+     * Update Lead by new Lead information
+     * @param $facebookId
+     * @param Lead $newLead
+     */
+    public function updateLead($facebookId, Lead $newLead){
+
+
+    }
+}

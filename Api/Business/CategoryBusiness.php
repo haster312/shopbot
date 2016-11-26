@@ -10,11 +10,11 @@ class CategoryBusiness extends Business
         new static;
 
         $categories = Category::select('*');
-        if($length > 0) {
+        if ($length > 0) {
             $categories->limit($length);
         }
 
-        if($length > 0 && $page > 0) {
+        if ($length > 0 && $page > 0) {
             $offset = $length * $page;
             $categories->offset($offset);
         }
@@ -25,7 +25,10 @@ class CategoryBusiness extends Business
         new static;
 
         $category = Category::find($categoryId);
-        return $category->toArray();
+        if ($category)
+            return $category->toArray();
+        else
+            return null;
     }
 
     public static function getProducts($categoryId, $length = null, $page = null){
@@ -33,7 +36,7 @@ class CategoryBusiness extends Business
 
         $category = Category::find($categoryId);
 
-        if($category) {
+        if ($category) {
             $product = Product::select('*')
                         ->where('category__c',$category->sfid);
 
@@ -48,7 +51,7 @@ class CategoryBusiness extends Business
 
             return $product->get()->toArray();
         } else {
-            return false;
+            return null;
         }
     }
 }

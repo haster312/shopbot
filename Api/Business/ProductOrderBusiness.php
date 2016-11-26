@@ -27,6 +27,10 @@ class ProductOrderBusiness extends Business {
         new static;
 
         $productOrder = ProductOrder::find($productOrderId);
-        return $productOrder->toArray();
+
+        if($productOrder)
+            return $productOrder->toArray();
+        else
+            return null;
     }
 }

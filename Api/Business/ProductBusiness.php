@@ -1,7 +1,24 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Haster
- * Date: 11/26/2016
- * Time: 10:56 PM
- */
+
+namespace Api\Business;
+use Api\Model\Product;
+
+class ProductBusiness extends Business {
+
+    public static function getProductById($productId) {
+        new static;
+
+        $product = Product::find($productId);
+        if ($product)
+            return $product->toArray();
+        else
+            return null;
+    }
+
+    public static function getProductBySF($productSF) {
+        new static;
+
+        $product = Product::where('sfid',$productSF)->first();
+        return $product;
+    }
+}
