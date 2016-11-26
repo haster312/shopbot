@@ -9,6 +9,7 @@ class CategoryController extends Controller {
 
     public function allCategoryAction() {
         $categories = $this->get('category.business')->getAllCategory();
+        var_dump($categories);exit;
         return $categories;
     }
 }

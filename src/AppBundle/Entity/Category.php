@@ -29,4 +29,5 @@ class Category {
      */
     private $status__c;
 
+
 }

@@ -33,4 +33,6 @@ class Promotion {
      * @ORM\Column(type="string")
      */
     private $promotionproduct__c;
+
+
 }
