@@ -64,7 +64,7 @@ class BotController extends Controller {
         // Products
         $bot->answer('payload:USER_TAPPED_PRODUCT', function() {
             //Check the category list
-            $hCategories = $this->getDoctrine()->getManager()->getRepository('AppBundle:Category')->getCategories();
+            $hCategories = "Could not do this";
             return "".$hCategories;
         });
 
