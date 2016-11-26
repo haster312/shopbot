@@ -30,14 +30,14 @@ class Category {
      */
     public $status__c;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $imageUrl;
 
     /**
-     * @param $categoryId
-     * @param null $length
-     * @param null $page
-     * @return array
+     * @ORM\Column(type="text")
      */
-    public function getProducts($categoryId, $length = null, $page = null){
+    public $description;
 
-    }
 }

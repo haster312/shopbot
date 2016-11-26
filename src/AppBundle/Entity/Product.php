@@ -39,4 +39,9 @@ class Product {
      * @ORM\Column(type="text")
      */
     public $category__c;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $imageUrl;
 }
