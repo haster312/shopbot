@@ -27,7 +27,7 @@ class CategoryRepository extends EntityRepository {
             $query->setFirstResult($offset);
         }
 
-        $categories = $query->getResult();
+        $categories = $query->getQuery()->getResult();
         return $categories;
     }
 
