@@ -58,6 +58,8 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
 
     /* @var $hCategory Category */
     foreach ($hCategories as $hCategory){
+        $nix[] = $hCategory->name;
+        return;
         $aCategory = [
             "title"     => $hCategory->name,
             "image_url" => $hCategory->imageurl__c,
