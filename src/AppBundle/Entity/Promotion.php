@@ -12,27 +12,27 @@ class Promotion {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $sfid;
+    public $sfid;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $name;
+    public $name;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $discount__c;
+    public $discount__c;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $promotionproduct__c;
+    public $promotionproduct__c;
 
     /**
      * Get all current promotion
