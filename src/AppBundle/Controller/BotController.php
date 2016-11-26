@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Category;
 
@@ -63,7 +64,12 @@ class BotController extends Controller {
         // Products
         $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
             //Check the category list
-            $hCategories = $this->getDoctrine()->getManager()->getRepository('AppBundle:Category')->getCategories();
+            try {
+                $hCategories = $this->getDoctrine()->getManager()->getRepository('AppBundle:Category')->getCategories();
+            }
+            catch(Exception $e){
+                return $e->getMessage();
+            }
 
             $mix = [];
             $mix[] = 'We have some kind of product lines for you.';
