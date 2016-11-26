@@ -5,5 +5,5 @@ use \Illuminate\Database\Eloquent\Model;
 
 class ProductOrder extends Model {
 
-    public $table = "productorder__c";
+    public $table = "salesforce.productorder__c";
 }
