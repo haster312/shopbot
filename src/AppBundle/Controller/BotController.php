@@ -19,7 +19,7 @@ class BotController extends Controller {
      */
     private function __construct()
     {
-        $this->em = $this->getDoctrine()->getManager();;
+        $this->em = $this->getDoctrine()->getManager();
     }
 
     /**
