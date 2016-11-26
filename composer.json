@@ -1,6 +1,6 @@
 {
     "autoload": {
-        "psr-4": { "": "/" }
+        "psr-4": { "": "/Api" }
     },
     "require": {
         "gigaai/framework": "dev-master"
