@@ -108,7 +108,7 @@ $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
             "buttons"   => [
                 [
                     "type"    => "postback",
-                    "payload" => "pro_" . $hProduct['id'],
+                    "payload" => "p_" . $hProduct['id'],
                     "title"   => "Order"
                 ]
             ]
@@ -128,7 +128,7 @@ $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
 */
 $productId = '';
 $lead = new \Api\Model\Lead();
-$bot->answer('payload:pro_%', function($bot, $lead_id, $input) use (&$productId){
+$bot->answer('payload:p_%', function($bot, $lead_id, $input) use (&$productId){
     //Get product id
     $payload = $bot->received->entry[0]->messaging[0]->postback->payload;
     $productId = explode('_', $payload)[1];
