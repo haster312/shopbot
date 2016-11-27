@@ -73,14 +73,14 @@ class ProductOrderBusiness extends Business {
                 $fromEmail = "contact@ebiz.solutions";
                 $subject = "Order Confirmation from Ebiz Solutions - Order No $ordernumber";
                 $toEmail = $lead['email'];
-                $disountPrice = ($product->price__c * $discount)/100;
+                $discountPrice = ($product['price__c'] * $discount)/100;
                 $body  = "<h4> Dear ". $lead['firstname']. "</h4>";
                 $body .= "<p>Here are your order informations:</p>";
                 $body .= "<p>Order Number: $ordernumber</p>";
                 $body .= "<p>Product: ". $product['name'] ."</p>";
                 $body .= "<p>Price: ".  $product['price__c'] ."</p>";
                 $body .= "<p>Discount: $discount%</p>";
-                $body .= "<p>Total: ". ($product->price__c - $disountPrice) ."</p>";
+                $body .= "<p>Total: ". ($product['price__c'] - $discountPrice) ."</p>";
                 $body .= "<p>Thank you for using our service!</p>";
                 $status = Mail::sendMail($fromEmail, $subject, $toEmail, $body);
                 return $status;
