@@ -27,7 +27,7 @@ class ProductOrderBusiness extends Business {
     public static function getProductOrderById($productOrderId) {
         new static;
 
-        $productOrder = ProductOrder::where('ordernumber__c', $productOrderId)->first();
+        $productOrder = ProductOrder::find($productOrderId);
 
         if($productOrder)
             return $productOrder->toArray();
