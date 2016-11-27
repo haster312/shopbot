@@ -80,12 +80,4 @@ class PromotionBusiness extends Business {
             return null;
         }
     }
-
-
-    public static function getPromotionById($sfid){
-        $promotion = Promotion::where('sfid',$sfid)->first();
-        if($promotion)
-            return $promotion->toArray();
-        return null;
-    }
 }

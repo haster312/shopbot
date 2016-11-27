@@ -184,13 +184,13 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
         return 'It seem not a valid order id, could you check and enter again?';
 
     $product = \Api\Business\ProductBusiness::getProductById($receipt['productid__c']);
-    $promotion = \Api\Business\PromotionBusiness::getPromotionById($receipt['sfid']);
+    $promotion = \Api\Business\PromotionBusiness::getPromotionByPromotionCode($receipt['sfid']);
     $discountPercent = 0;
     if($promotion){
-        $discountPercent = $promotion->discount__c;
+        $discountPercent = $promotion['discount__c'];
     }
-    $discountAmount = $product->price__c * $discountPercent / 100;
-    $totalCost = $product->price_c - $discountAmount;
+    $discountAmount = $product['price__c'] * $discountPercent / 100;
+    $totalCost = $product['price__c'] - $discountAmount;
 
     $bot->say('Receipt' . $receipt['productid__c']);
     $bot->say('Product: ' . json_encode($product['name']));
@@ -199,21 +199,21 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
     $mix =
         [
             "recipient_name"    => $userProfile['first_name'] . ' ' . $userProfile['last_name'],
-            "order_number"      => $receipt->ordernumber__c,
+            "order_number"      => $receipt['ordernumber__c'],
             "currency"          => "USD",
             "payment_method"    => "COD",
             "elements" => [
                 [
-                    "title"         => $product->name,
-                    "subtitle"      => substr($product->description, 50) . ' ...',
+                    "title"         => $product['name'],
+                    "subtitle"      => substr($product['description'], 50) . ' ...',
                     "quantity"      => 1,
-                    "price"         => $product->price__c,
+                    "price"         => $product['imageurl__c'],
                     "currency"      => "USD",
-                    "image_url"     => $product->imageurl__c
+                    "image_url"     => $product['imageurl__c']
                 ]
             ],
             "summary" => [
-                "subtotal"          => $product->price__c,
+                "subtotal"          => $product['price__c'],
                 "shipping_cost"     => 0,
                 "total_tax"         => 0,
                 "total_cost"        => $totalCost
