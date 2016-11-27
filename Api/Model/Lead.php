@@ -4,7 +4,7 @@ namespace Api\Model;
 use \Illuminate\Database\Eloquent\Model;
 
 class Lead extends Model {
-    protected $connection = 'heroku';
+
     public $table = "salesforce.lead";
     public $timestamps = false;
     protected $fillable = [
