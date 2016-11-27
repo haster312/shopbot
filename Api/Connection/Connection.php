@@ -31,7 +31,7 @@ class Connection{
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
-        ]);
+        ], 'heroku');
 
         // Make this Capsule instance available globally via static methods... (optional)
         $this->db->setAsGlobal();
