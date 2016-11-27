@@ -78,7 +78,14 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
     $mix[] = $categories;
     return $mix;
 });
-//Handle category post back
+
+/*
+|--------------------------------------------------------------------------
+| Handling the post back
+|--------------------------------------------------------------------------
+| Handle product postback
+|
+*/
 $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
     //Get category product
     $payload = $bot->received->entry[0]->messaging[0]->postback->payload;
@@ -97,7 +104,7 @@ $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
         $aProduct = [
             "title"     => $hProduct['name'],
             "image_url" => $hProduct['imageurl__c'],
-            "subtitle"  => $hProduct['description__c'],
+            "subtitle"  => substr($hProduct['description'], 0, 50),
             "buttons"   => [
                 [
                     "type"    => "postback",
@@ -110,7 +117,49 @@ $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
     }
     $mix[] = $products;
     return $mix;
+});
 
+/*
+|--------------------------------------------------------------------------
+| Handling the post back
+|--------------------------------------------------------------------------
+| Handle Order postback
+|
+*/
+$productId = '';
+$lead = new \Api\Model\Lead();
+$bot->answer('payload:pro_%', function($bot, $lead_id, $input) use (&$productId){
+    //Get product id
+    $payload = $bot->received->entry[0]->messaging[0]->postback->payload;
+    $productId = explode('_', $payload)[1];
+    return 'Please tell me your email.';
+})->then(function($bot, $lead_id, $input) use(&$lead){
+    if(!filter_var($input, FILTER_VALIDATE_EMAIL)){
+        $bot->keep('It does not look like an valid email, could you verify and enter your email again?');
+        return;
+    }
+
+    $userProfile = \GigaAI\Http\Request::getUserProfile($lead_id);
+    $lead->firstname = $userProfile['first_name'];
+    $lead->lastname = $userProfile['last_name'];
+    $lead->email = $input;
+    $lead->facebookid__c = $lead_id;
+
+    return 'Please tell me your address.';
+})->then(function($bot, $lead_id, $input) use (&$lead, $productId){
+    $lead->address = $input;
+    //Register lead
+    $hLead = \Api\Business\LeadBusiness::getLeadByFacebookId($lead_id);
+    if ($hLead != null){
+        //Update
+        \Api\Business\LeadBusiness::updateLead($lead_id, $lead);
+    } else{
+        \Api\Business\LeadBusiness::createLead($lead);
+    }
+    //Create order
+    $orderId = \Api\Business\ProductOrderBusiness::createOrder($lead_id, $productId);
+    return 'Thank you for your order. Your order code is ' . $orderId .
+        '. You can check your receipt anytime by typing \'Receipt\' any time or access the Menu and choose  \'Receipt\'';
 });
 
 
