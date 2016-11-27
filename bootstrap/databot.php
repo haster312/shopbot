@@ -16,11 +16,11 @@ class DataBot extends Model {
         parent::__construct($attributes);
     }
 
-    public static function setData($leadId, $key, $data){
+    public static function setData($leadId, $key, $value){
         $instance = new DataBot();
         $instance->lead_id  = $leadId;
         $instance->key      = $key;
-        $instance->data   = serialize($data);
+        $instance->value   = serialize($value);
         $instance->save();
     }
 
