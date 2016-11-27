@@ -75,7 +75,7 @@ class ProductOrderBusiness extends Business {
                 $toEmail = $lead['email'];
                 $discountPrice = ($product['price__c'] * $discount)/100;
                 $orderDate = date('M d Y');
-                $body  = "<link href='Api/Helper/styles.css' media='all' rel='stylesheet' type='text/css' />";
+                $body  = "<link href='/Api/Helper/styles.css' media='all' rel='stylesheet' type='text/css' />";
                 $body .= "<table class='body-wrap'><tr><td></td>";
                 $body .= "<td class='container' width='600'><div class='content'>
 				            <table class='main' width='100%' cellpadding='0' cellspacing='0'>
