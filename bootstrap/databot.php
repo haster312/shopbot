@@ -5,7 +5,7 @@ use GigaAI\Storage\Storage;
 class DataBot extends Model {
     public $table = "bot_data";
     public $timestamps = false;
-    private $connection;
+    public $connection;
     protected $fillable = [
         'lead_id', 'key', 'value'
     ];
