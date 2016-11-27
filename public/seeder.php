@@ -74,9 +74,13 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
     }
     $mix[] = $categories;
     return $mix;
-})->then(function ($bot, $lead_id, $input){
-    return "asgsg" . $input;
 });
+//Handle category post back
+$bot->answer('payload:cat_%', function($bot){
+    //Get category product
+    $bot->say('Sorry, there is no product in this category at the moment');
+});
+
 
 // About Ebiz
 $bot->answer(['payload:USER_TAPPED_ABOUT'], [
@@ -94,9 +98,10 @@ $bot->answer('default:', 'Sorry I\'m not understand. You could check the Menu fo
 
 // Other
 $bot->answer([
-    '^(thank|thank you)'                 => 'It been my pleasure!',
-    'you%funny%'                => 'I don\'t think so :)',
-    '^(bad|bitch)(.*)girl$'     => 'Sorry but it is my best'
+    '^(thank|thank you)'                => 'It been my pleasure!',
+    'you%funny%'                        => 'I don\'t think so :)',
+    '^(bad|bitch|fuck|shit|hell)'       => 'Sorry but it is my best',
+    '%fucking awesome%'                 => 'Really? I\'m glad to hear that'
 ]);
 
 // Print some message to the browser when done
