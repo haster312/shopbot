@@ -126,39 +126,39 @@ $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
 | Handle Order postback
 |
 */
-$productId = '';
-$lead = new \Api\Model\Lead();
-$bot->answer('payload:cap_%', function($bot, $lead_id, $input) use (&$productId){
+$GLOBALS['lead'] = new \Api\Model\Lead();
+$GLOBALS['productId'] = '';
+$bot->answer('payload:cap_%', function($bot, $lead_id, $input){
     //Get product id
     $payload = $bot->received->entry[0]->messaging[0]->postback->payload;
-    $productId = explode('_', $payload)[1];
+    $GLOBALS['productId'] = explode('_', $payload)[1];
     return 'Please tell me your email.';
-})->then(function($bot, $lead_id, $input) use(&$lead){
+})->then(function($bot, $lead_id, $input){
     if(!filter_var($input, FILTER_VALIDATE_EMAIL)){
         $bot->keep('It does not look like an valid email, could you verify and enter your email again?');
         return;
     }
 
     $userProfile = \GigaAI\Http\Request::getUserProfile($lead_id);
-    $lead->firstname = $userProfile['first_name'];
-    $lead->lastname = $userProfile['last_name'];
-    $lead->email = $input;
-    $lead->facebookid__c = $lead_id;
+    $GLOBALS['lead']->firstname = $userProfile['first_name'];
+    $GLOBALS['lead']->lastname = $userProfile['last_name'];
+    $GLOBALS['lead']->email = $input;
+    $GLOBALS['lead']->facebookid__c = $lead_id;
 
     return 'Please tell me your address.';
-})->then(function($bot, $lead_id, $input) use (&$lead, $productId){
-    $lead->street = $input;
+})->then(function($bot, $lead_id, $input){
+    $GLOBALS['lead']->street = $input;
     //Register lead
     $hLead = \Api\Business\LeadBusiness::getLeadByFacebookId($lead_id);
     if ($hLead != null){
         //Update
-        \Api\Business\LeadBusiness::updateLead($lead_id, $lead);
+        \Api\Business\LeadBusiness::updateLead($lead_id, $GLOBALS['lead']);
     } else{
-        \Api\Business\LeadBusiness::createLead($lead);
+        \Api\Business\LeadBusiness::createLead($GLOBALS['lead']);
     }
     //Create order
-    $orderId = \Api\Business\ProductOrderBusiness::createOrder($lead_id, $productId);
-    $bot->say(json_encode($lead));
+    $orderId = \Api\Business\ProductOrderBusiness::createOrder($lead_id, $GLOBALS['productId']);
+    $bot->say(json_encode($GLOBALS['lead']));
     return 'Thank you for your order. Your order code is ' . $orderId .
         '. You can check your receipt anytime by typing \'Receipt\' any time or access the Menu and choose  \'Receipt\'';
 });
