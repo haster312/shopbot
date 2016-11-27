@@ -177,7 +177,7 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
 });
 
 $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot, $lead_id, $input){
-    $receipt = \Api\Business\ProductOrderBusiness::productOrder($input);
+    $receipt = \Api\Business\ProductOrderBusiness::getProductOrderByNumber($input);
     $bot->say('Result: ' . json_encode($receipt) . $input);
 
     $userProfile = \GigaAI\Http\Request::getUserProfile($lead_id);
