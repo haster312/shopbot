@@ -23,7 +23,7 @@ class LeadBusiness extends Business {
     /**
      * create new lead
      * @param $lead
-     * @return bool
+     * @return array
      */
     public static function createLead($lead) {
         new static;
@@ -34,17 +34,19 @@ class LeadBusiness extends Business {
         $newLead->facebookid__c = $lead['facebook_id'];
         $newLead->phone         = $lead['phone'];
         $newLead->email         = $lead['email'];
+        $newLead->company       = "Company";
+        $newLead->street        = $lead['street'];
         $newLead->status        = "Open";
         $newLead->save();
 
-        return true;
+        return $newLead->toArray();
     }
 
     /**
      * Update Lead by new Lead information
      * @param $facebookId
      * @param $lead
-     * @return bool
+     * @return mixed
      */
     public static function updateLead($facebookId, $lead){
         new static;
@@ -57,11 +59,13 @@ class LeadBusiness extends Business {
             $updateLead->facebookid__c = $lead['facebook_id'];
             $updateLead->phone         = $lead['phone'];
             $updateLead->email         = $lead['email'];
+            $updateLead->company       = "Company";
+            $updateLead->street        = $lead['street'];
             $lead->save();
         }
         else
             return false;
 
-        return true;
+        return $updateLead->toArray();
     }
 }

@@ -74,16 +74,23 @@ class ProductOrderBusiness extends Business {
                 $subject = "Order Confirmation from Ebiz Solutions - Order No $ordernumber";
                 $toEmail = $lead['email'];
                 $discountPrice = ($product['price__c'] * $discount)/100;
-                $body  = "<h4> Dear ". $lead['firstname']. "</h4>";
-                $body .= "<p>Here are your order informations:</p>";
+                $body  = "<link href='/styles.css' media='all' rel='stylesheet' type='text/css' />";
+                $body .= "<table class='body-wrap'><tr><td></td>";
+                $body .= "<td class='container' width='600'><div class='content'>
+				            <table class='main' width='100%' cellpadding='0' cellspacing='0'>
+					            <tr><td class='content-wrap aligncenter'><table width='100%' cellpadding='0' cellspacing='0'>";
+                $body .= "<h4> Dear ". $lead['firstname'] . "</h4>";
+                $body .= "<p>Here are your order informations :</p>";
                 $body .= "<p>Order Number: $ordernumber</p>";
                 $body .= "<p>Product: ". $product['name'] ."</p>";
                 $body .= "<p>Price: ".  $product['price__c'] ."</p>";
                 $body .= "<p>Discount: $discount%</p>";
                 $body .= "<p>Total: ". ($product['price__c'] - $discountPrice) ."</p>";
-                $body .= "<p>Thank you for using our service!</p>";
+                $body .= "<p>Thank you for using our service.</p>";
+                $body .= "</tr></table>";
                 $status = Mail::sendMail($fromEmail, $subject, $toEmail, $body);
-                return $status;
+
+                return $ordernumber;
             }
         } else {
             return false;
