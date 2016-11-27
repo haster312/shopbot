@@ -64,6 +64,23 @@ class PromotionBusiness extends Business {
         }
     }
 
+    /**
+     * get promotion by sfid
+     * @param $promotionCode
+     * @return mixed
+     */
+    public static function getPromotionByPromotionCode($promotionCode) {
+        new static;
+
+        $promotion = Promotion::where('sfid',$promotionCode)->first();
+
+        if ($promotion) {
+            return $promotion->toArray();
+        } else {
+            return null;
+        }
+    }
+
 
     public static function getPromotionById($sfid){
         $promotion = Promotion::where('sfid',$sfid)->first();

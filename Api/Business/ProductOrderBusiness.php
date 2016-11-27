@@ -70,12 +70,11 @@ class ProductOrderBusiness extends Business {
             $productOrder->save();
 
             if ($productOrder) {
-                $fromEmail = "contact@ebiz.solutions";
+                $fromEmail = getenv('PRIMARY_EMAIL_ADDRESS');
                 $subject = "Order Confirmation from Ebiz Solutions - Order No $ordernumber";
                 $toEmail = $lead['email'];
-                $body    = Mail::renderOrder($lead, $product, $discount, $ordernumber);
+
                 $discountPrice = ($product['price__c'] * $discount)/100;
-                $orderDate = date('M d Y');
                 $content['orderNumber'] = $ordernumber;
                 $content['name']     = $lead['firstname']. " " .$lead['lastname'];
                 $content['address']  = $lead['street'];
