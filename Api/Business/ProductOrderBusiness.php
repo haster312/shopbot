@@ -106,7 +106,7 @@ class ProductOrderBusiness extends Business {
                 						<td class='alignright'>$ ". $product['price__c'] ."</td>
                                     </tr>
                                     <tr>
-                                        <td>Discount</td>
+                                        <td class='alignright'><b>Discount</b></td>
                 						<td class='alignright'>". $discount ."%</td>
                                     </tr>";
                 $body .= "<tr class='total'>
