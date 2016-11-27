@@ -52,7 +52,7 @@ class PromotionBusiness extends Business {
         if ($product) {
             $promotion = Promotion::where('promotionproduct__c', $product->sfid)->first();
             if ($promotion)
-                return $promotion;
+                return $promotion->toArray();
             else
                 return null;
         } else {
