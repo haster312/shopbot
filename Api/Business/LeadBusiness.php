@@ -10,7 +10,7 @@ class LeadBusiness extends Business {
      * @param $facebookId
      * @return Lead
      */
-    public function getLeadByFacebookId($facebookId){
+    public static function getLeadByFacebookId($facebookId){
         new static;
 
         $lead = Lead::where('facebookid__c',$facebookId)->first();
@@ -20,13 +20,26 @@ class LeadBusiness extends Business {
             return null;
     }
 
+
+    public static function createLead($lead) {
+        new static;
+
+        $newLead = new Lead();
+        $newLead->firstname     = $lead['firstname'];
+        $newLead->lastname      = $lead['lastname'];
+        $newLead->facebookid__c = $lead['facebook_id'];
+        $newLead->phone         = $lead['phone'];
+        $newLead->email         = $lead['email'];
+        $newLead->status        = "Open";
+        $newLead->save();
+    }
+
     /**
      * Update Lead by new Lead information
      * @param $facebookId
-     * @param Lead $newLead
      */
-    public function updateLead($facebookId, Lead $newLead){
-
+    public function updateLead($facebookId, $lead){
+        new static;
 
     }
 }

@@ -33,4 +33,29 @@ class ProductOrderBusiness extends Business {
         else
             return null;
     }
+
+    public static function createOrder($facebookId, $productId) {
+        new static;
+
+        if ($facebookId == null || $productId == null) {
+            return false;
+        }
+
+        $lead      = LeadBusiness::getLeadByFacebookId($facebookId);
+        $product   = ProductBusiness::getProductById($productId);
+        $promotion = PromotionBusiness::getPromotionByProductId($productId);
+
+        if (!$lead || !$product) {
+            $productOrder = New ProductOrder();
+            $productOrder->name             = "Order $product->name";
+            $productOrder->productid__c     = $product->id;
+            $productOrder->leadid__c        = $lead->id;
+            $productOrder->totalamount__c   = $product->price__c;
+            if ($promotion)
+                $productOrder->promotion__c = $promotion->sfid;
+            $productOrder->save();
+        }
+
+        return true;
+    }
 }

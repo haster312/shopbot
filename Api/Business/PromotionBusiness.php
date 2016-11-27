@@ -43,4 +43,20 @@ class PromotionBusiness extends Business {
         }
 
     }
+
+    public static function getPromotionByProductId($productId) {
+        new static;
+
+        $product   = Product::find($productId);
+
+        if ($product) {
+            $promotion = Promotion::where('promotionproduct__c', $product->sfid)->first();
+            if ($promotion)
+                return $promotion;
+            else
+                return null;
+        } else {
+            return null;
+        }
+    }
 }
