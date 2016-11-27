@@ -73,52 +73,25 @@ class ProductOrderBusiness extends Business {
                 $fromEmail = "contact@ebiz.solutions";
                 $subject = "Order Confirmation from Ebiz Solutions - Order No $ordernumber";
                 $toEmail = $lead['email'];
+                $body    = Mail::renderOrder($lead, $product, $discount, $ordernumber);
                 $discountPrice = ($product['price__c'] * $discount)/100;
                 $orderDate = date('M d Y');
-                $body  = "<link href='/Api/Helper/styles.css' media='all' rel='stylesheet' type='text/css' />";
-                $body .= "<table class='body-wrap'><tr><td></td>";
-                $body .= "<td class='container' width='600'><div class='content'>
-				            <table class='main' width='100%' cellpadding='0' cellspacing='0'>
-					            <tr>
-					                <td class='content-wrap aligncenter'>
-					                    <table width='100%' cellpadding='0' cellspacing='0'>";
-                $body .= "  <tr>
-                                <td class='content-block'>
-                                    <h1 class='aligncenter'>Order Number: $ordernumber</h1>
-                                </td>
-                            </tr>";
-                $body .= "<tr>
-                            <td class='content-block'>
-                                <h2 class='aligncenter'>Thank you for using our services.</h2>
-                            </td>
-                        </tr>";
-                $body .= "<tr>
-                            <td class='content-block aligncenter'>
-                                <table class='invoice'>";
-                $body .= "<tr>
-                              <td><p>".$lead['firstname'] ." ".$lead['lastname']."</p><p>". $lead['street'] ."</p><p>".$orderDate."</p></td>
-                          </tr>";
-                $body .= "<tr>
-                            <td>
-                                <table class='invoice-items' cellpadding='0' cellspacing='0'>
-                                    <tr>
-                                        <td>".$product['name']."</td>
-                						<td class='alignright'>$ ". $product['price__c'] ."</td>
-                                    </tr>
-                                    <tr>
-                                        <td class='alignright'><b>Discount</b></td>
-                						<td class='alignright'><b>". $discount ."%</b></td>
-                                    </tr>";
-                $body .= "<tr class='total'>
-                                <td class='alignright' width='80%'>Total</td>
-                                <td class='alignright'>$ ". ($product['price__c'] - $discountPrice) ."</td>
-                            </tr>";
-                $body .= "</table></td></tr></table></td></tr>";
-                $body .= "</table></div></td><td></td></tr></table>";
-
-                $status = Mail::sendMail($fromEmail, $subject, $toEmail, $body);
-
-                return $ordernumber;
+                $content['orderNumber'] = $ordernumber;
+                $content['name']     = $lead['firstname']. " " .$lead['lastname'];
+                $content['address']  = $lead['street'];
+                $content['date']     = date('M d Y');
+                $content['product']  = $product['name'];
+                $content['price']    = $product['price__c'];
+                $content['discount'] = $discount;
+                $content['total']    = $product['price__c'] - $discountPrice;
+                $body = Mail::renderOrder($content);
+                echo $body;exit;
+                try {
+                    Mail::sendMail($fromEmail, $subject, $toEmail, $body);
+                    return $ordernumber;
+                } catch (\Exception $e) {
+                    return "Your order hasn't been sent";
+                }
             }
         } else {
             return false;

@@ -23,4 +23,18 @@ class Mail {
         $response = $sg->client->mail()->send()->post($mail);
         return $response->statusCode();
     }
+
+    /**
+     * render order confirmation email
+     * @param $path
+     * @param $content
+     * @return string
+     */
+    public static function renderOrder($content) {
+        ob_start();
+        include('OrderConfirm.php');
+        $var=ob_get_contents();
+        ob_end_clean();
+        return $var;
+    }
 }
