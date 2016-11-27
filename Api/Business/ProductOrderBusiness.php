@@ -96,7 +96,7 @@ class ProductOrderBusiness extends Business {
                             <td class='content-block aligncenter'>
                                 <table class='invoice'>";
                 $body .= "<tr>
-                              <td>".$lead['firstname'] ." ".$lead['lastname']."<br>". $lead['street'] ."<br>".$orderDate."</td>
+                              <td><p>".$lead['firstname'] ." ".$lead['lastname']."</p><p>". $lead['street'] ."</p><p>".$orderDate."</p></td>
                           </tr>";
                 $body .= "<tr>
                             <td>
@@ -115,7 +115,7 @@ class ProductOrderBusiness extends Business {
                             </tr>";
                 $body .= "</table></td></tr></table></td></tr>";
                 $body .= "</table></div></td><td></td></tr></table>";
-                echo $body;exit;
+
                 $status = Mail::sendMail($fromEmail, $subject, $toEmail, $body);
 
                 return $ordernumber;
