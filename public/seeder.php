@@ -222,6 +222,7 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
             'amount'    => $discountAmount
         ]
     ];
+    return $mix;
 });
 
 // About Ebiz
