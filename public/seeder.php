@@ -176,13 +176,42 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
         '. You can check your receipt anytime by typing \'Receipt\' any time or access the Menu and choose  \'Receipt\'');
 });
 
-$bot->answers(['Receipt', 'payload:USER_TAPPED_RECEIPT'], 'Please let me know your order id');
+$bot->answer('Receipt', 'Please let me know your order id')->then(function($bot, $lead_id, $input){
+    $receipt = \Api\Business\ProductOrderBusiness::getProductOrderById($input);
+    $bot->say('Result: ' . json_encode($receipt));
+
+    $userProfile = \GigaAI\Http\Request::getUserProfile($lead_id);
+    if($receipt == null)
+        return 'It seem not a valid order id, could you check and enter again?';
+    return
+        [
+            "recipient_name" => $userProfile['first_name'] . ' ' . $userProfile['last_name'],
+            "order_number" => $receipt['ordernumber__c'],
+            "currency" => "USD",
+            "elements" => [
+                [
+                    "title" => "Classic White T-Shirt",
+                    "subtitle" => "100% Soft and Luxurious Cotton",
+                    "quantity" => 1,
+                    "price" => $receipt['totalamount__c'],
+                    "currency" => "USD",
+                    "image_url" => "http://petersapparel.parseapp.com/img/whiteshirt.png"
+                ]
+            ],
+            "summary" => [
+                "subtotal" => 75.00,
+                "shipping_cost" => 4.95,
+                "total_tax" => 6.19,
+                "total_cost" => 56.14
+            ]
+        ];
+});
 
 // About Ebiz
-$bot->answer('payload:USER_TAPPED_ABOUT', function($bot) {
-    $bot->say('Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries');
-    $bot->say('Check our website for more detail: http://ebiz.solutions');
-});
+$bot->answer('payload:USER_TAPPED_ABOUT', [
+	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries',
+	'Check our website for more detail: http://ebiz.solutions']
+);
 
 
 
