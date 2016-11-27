@@ -25,7 +25,7 @@ class LeadBusiness extends Business {
      * @param $lead
      * @return bool
      */
-    public static function createLead($facebookId = null, $lead) {
+    public static function createLead($lead) {
         new static;
 
         $newLead = new Lead();
