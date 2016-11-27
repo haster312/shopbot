@@ -52,11 +52,12 @@ class ProductOrderBusiness extends Business {
         $product   = ProductBusiness::getProductById($productId);
         $promotion = PromotionBusiness::getPromotionByProductId($productId);
 
+        var_dump($lead,$product);exit;
         if ($lead && $product) {
             $productOrder = New ProductOrder();
             $productOrder->name = "Order $product->name";
-            $productOrder->productid__c = $product->id;
-            $productOrder->leadid__c = $lead->id;
+            $productOrder->productid__c   = $product->id;
+            $productOrder->leadid__c      = $lead->id;
             $productOrder->totalamount__c = $product->price__c;
             $ordernumber = date('Y') . date('m') . random_int(100, 1000);
             $productOrder->ordernumber__c = $ordernumber;
