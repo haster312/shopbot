@@ -60,7 +60,7 @@ class LeadBusiness extends Business {
             $updateLead->email         = $lead['email'];
             $updateLead->company       = "Company";
             $updateLead->street        = $lead['street'];
-            $lead->save();
+            $updateLead->save();
         }
         else
             return false;
