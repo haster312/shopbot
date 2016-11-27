@@ -220,8 +220,8 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
             ],
             "adjustments" => [
                 [
-                    'name'          => 'Promotion Discount ' . $discountPercent,
-                    'amount'        => $discountAmount
+                    'name'          => 'Promotion Discount ',
+                    'amount'        => 10
                 ]
             ]
         ];
