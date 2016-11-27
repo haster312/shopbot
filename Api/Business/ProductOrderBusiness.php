@@ -70,7 +70,7 @@ class ProductOrderBusiness extends Business {
             $productOrder->save();
 
             if ($productOrder) {
-                $fromEmail = "contact@ebiz.solutions";
+                $fromEmail = getenv('PRIMARY_EMAIL_ADDRESS');
                 $subject = "Order Confirmation from Ebiz Solutions - Order No $ordernumber";
                 $toEmail = $lead['email'];
 
