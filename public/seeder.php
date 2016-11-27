@@ -185,15 +185,16 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
         return 'It seem not a valid order id, could you check and enter again?';
     return
         [
-            "recipient_name" => $userProfile['first_name'] . ' ' . $userProfile['last_name'],
-            "order_number" => $receipt['ordernumber__c'],
+            "recipient_name" => "Stephane Crozatier",
+            "order_number" => rand(0, 100000),
             "currency" => "USD",
+            "payment_method" => "COD",
             "elements" => [
                 [
                     "title" => "Classic White T-Shirt",
                     "subtitle" => "100% Soft and Luxurious Cotton",
-                    "quantity" => 1,
-                    "price" => $receipt['totalamount__c'],
+                    "quantity" => 2,
+                    "price" => 50,
                     "currency" => "USD",
                     "image_url" => "http://petersapparel.parseapp.com/img/whiteshirt.png"
                 ]
