@@ -18,6 +18,7 @@ class Mail {
         $body    = new \SendGrid\Content("text/html", $body);
         $mail    = new \SendGrid\Mail($from, $subject, $to, $body);
 
+        var_dump($body);exit;
         $apiKey = getenv('SENDGRID_API_KEY');
         $sg = new \SendGrid($apiKey);
         $response = $sg->client->mail()->send()->post($mail);
