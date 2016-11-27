@@ -179,10 +179,10 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
 $bot->answers(['Receipt', 'payload:USER_TAPPED_RECEIPT'], 'Please let me know your order id');
 
 // About Ebiz
-$bot->answer('payload:USER_TAPPED_ABOUT', [
-	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries',
-	'Check our website for more detail: http://ebiz.solutions']
-);
+$bot->answer('payload:USER_TAPPED_ABOUT', function($bot) {
+    $bot->say('Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries');
+    $bot->say('Check our website for more detail: http://ebiz.solutions');
+});
 
 
 
