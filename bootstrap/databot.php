@@ -25,8 +25,8 @@ class DataBot extends Model {
     }
 
     public static function getData($leadId, $key){
-        new static;
-        $data = DataBot::where('lead_id', $leadId)->where('key', $key)->first();
+        $instance = new DataBot();
+        $data = $instance->where('lead_id', $leadId)->where('key', $key)->first();
         if($data)
             return unserialize($data);
         return null;

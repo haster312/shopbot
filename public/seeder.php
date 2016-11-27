@@ -160,14 +160,14 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
 
     return 'Please tell me your address.';
 })->then(function($bot, $lead_id, $input){
+    //Get product Id
+    $productId = DataBot::getData($lead_id, 'productId');
+
     $hLead = \Api\Business\LeadBusiness::getLeadByFacebookId($lead_id);
     $hLead['street'] = $input;
 
     //Update
     \Api\Business\LeadBusiness::updateLead($lead_id, $hLead);
-
-    //Get product Id
-    $productId = DataBot::getData($lead_id, 'productId');
 
     //Create order
     $orderId = \Api\Business\ProductOrderBusiness::createOrder($lead_id, $productId);
