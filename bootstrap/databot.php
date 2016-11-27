@@ -10,7 +10,7 @@ class DataBot extends Model {
     ];
 
     public static function setData($leadId, $key, $object){
-        $instance = new static;
+        $instance = new DataBot();
         $instance->lead_id  = $leadId;
         $instance->key      = $key;
         $instance->object   = serialize($object);
@@ -18,8 +18,7 @@ class DataBot extends Model {
     }
 
     public static function getData($leadId, $key){
-        $instance = new static;
-        $data = $instance->where('lead_id', $leadId)->andWhere('key', $key)->first();
+        $data = DataBot::where('lead_id', $leadId)->where('key', $key)->first();
         if($data)
             return unserialize($data);
         return null;
