@@ -60,6 +60,11 @@ class PromotionBusiness extends Business {
         }
     }
 
+    /**
+     * get promotion by sfid
+     * @param $promotionCode
+     * @return mixed
+     */
     public static function getPromotionByPromotionCode($promotionCode) {
         new static;
 
@@ -71,5 +76,4 @@ class PromotionBusiness extends Business {
             return null;
         }
     }
-
 }
