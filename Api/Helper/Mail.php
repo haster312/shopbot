@@ -20,8 +20,7 @@ class Mail {
 
         $apiKey = getenv('SENDGRID_API_KEY');
         $sg = new \SendGrid($apiKey);
-        var_dump($sg);exit;
-        $response = $sg->client->mail()->send->post($mail);
+        $response = $sg->client->mail()->send()->post($mail);
         return $response->statusCode();
     }
 }
