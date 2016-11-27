@@ -192,7 +192,8 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
     $discountAmount = $product->price__c * $discountPercent / 100;
     $totalCost = $product->price_c - $discountAmount;
 
-    $bot->say('Result: ' . json_encode($product->name));
+    $bot->say('Receipt' . $receipt['productid__c']);
+    $bot->say('Product: ' . json_encode($product['name']));
     $bot->say('Promotion: ' . json_encode($promotion));
 
     $mix =
