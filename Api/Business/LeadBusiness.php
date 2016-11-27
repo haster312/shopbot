@@ -20,8 +20,12 @@ class LeadBusiness extends Business {
             return null;
     }
 
-
-    public static function createLead($lead) {
+    /**
+     * create new lead
+     * @param $lead
+     * @return bool
+     */
+    public static function createLead($facebookId = null, $lead) {
         new static;
 
         $newLead = new Lead();
@@ -32,14 +36,32 @@ class LeadBusiness extends Business {
         $newLead->email         = $lead['email'];
         $newLead->status        = "Open";
         $newLead->save();
+
+        return true;
     }
 
     /**
      * Update Lead by new Lead information
      * @param $facebookId
+     * @param $lead
+     * @return bool
      */
     public function updateLead($facebookId, $lead){
         new static;
 
+        $lead = Lead::where('facebook_id',$facebookId)->first();
+
+        if ($lead) {
+            $lead->firstname     = $lead['firstname'];
+            $lead->lastname      = $lead['lastname'];
+            $lead->facebookid__c = $lead['facebook_id'];
+            $lead->phone         = $lead['phone'];
+            $lead->email         = $lead['email'];
+            $lead->save();
+        }
+        else
+            LeadBusiness::createLead($facebookId, $lead);
+
+        return true;
     }
 }
