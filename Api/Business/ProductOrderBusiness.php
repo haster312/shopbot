@@ -89,7 +89,8 @@ class ProductOrderBusiness extends Business {
                 $body .= "<p>Thank you for using our service.</p>";
                 $body .= "</tr></table>";
                 $status = Mail::sendMail($fromEmail, $subject, $toEmail, $body);
-                return $status;
+
+                return $ordernumber;
             }
         } else {
             return false;
