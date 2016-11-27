@@ -79,7 +79,11 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
 //Handle category post back
 $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
     //Get category product
-    $bot->say('Sorry, there is no product in this category at the moment for ' . json_encode($bot->received));
+    $payload = $bot->received->entry[0]->messaging[0]->postback->payload;
+    $categoryId = explode('_', $payload)[1];
+    $products = \Api\Business\CategoryBusiness::getProducts($categoryId);
+
+    $bot->say('Sorry, there is no product in this category at the moment.' . json_encode($products));
 });
 
 
