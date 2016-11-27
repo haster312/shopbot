@@ -78,16 +78,43 @@ class ProductOrderBusiness extends Business {
                 $body .= "<table class='body-wrap'><tr><td></td>";
                 $body .= "<td class='container' width='600'><div class='content'>
 				            <table class='main' width='100%' cellpadding='0' cellspacing='0'>
-					            <tr><td class='content-wrap aligncenter'><table width='100%' cellpadding='0' cellspacing='0'>";
-                $body .= "<h4> Dear ". $lead['firstname'] . "</h4>";
-                $body .= "<p>Here are your order informations :</p>";
-                $body .= "<p>Order Number: $ordernumber</p>";
-                $body .= "<p>Product: ". $product['name'] ."</p>";
-                $body .= "<p>Price: ".  $product['price__c'] ."</p>";
-                $body .= "<p>Discount: $discount%</p>";
-                $body .= "<p>Total: ". ($product['price__c'] - $discountPrice) ."</p>";
-                $body .= "<p>Thank you for using our service.</p>";
-                $body .= "</tr></table>";
+					            <tr>
+					                <td class='content-wrap aligncenter'>
+					                    <table width='100%' cellpadding='0' cellspacing='0'>";
+                $body .= "  <tr>
+                                <td class='content-block'>
+                                    <h1 class='aligncenter'>Order Number: $ordernumber</h1>
+                                </td>
+                            </tr>";
+                $body .= "<tr>
+                            <td class='content-block aligncenter'>
+                                <table class='invoice'>";
+                $body .= "<tr>
+                              <td>".$lead['firstname'] ." ".$lead['lastname']."<br>date('M d Y')</td>
+                          </tr>";
+                $body .= "<tr>
+                            <td>
+                                <table class='invoice-items' cellpadding='0' cellspacing='0'>
+                                    <tr>
+                                        <td>".$product['name']."</td>
+                						<td class='alignright'>$ ". $product['price__c'] ."</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Discount</td>
+                						<td class='alignright'>$ ". $discount ."%</td>
+                                    </tr>";
+                $body .= "<tr class='total'>
+                                <td class='alignright' width='80%'>Total</td>
+                                <td class='alignright'>$ ". ($product['price__c'] - $discountPrice) ."</td>
+                            </tr>";
+                $body .= "</table></td></tr></table></td></tr>";
+                $body .= "<tr>
+                                <td class='content-block aligncenter'>
+                                    ". $lead['street'] ."
+                                </td>
+                            </tr>";
+                $body .= "</table></div></td><td></td></tr></table>";
+                echo $body;exit;
                 $status = Mail::sendMail($fromEmail, $subject, $toEmail, $body);
 
                 return $ordernumber;
