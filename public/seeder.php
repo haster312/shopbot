@@ -207,7 +207,7 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
                     "title"         => $product['name'],
                     "subtitle"      => substr($product['description'], 50) . ' ...',
                     "quantity"      => 1,
-                    "price"         => $product['imageurl__c'],
+                    "price"         => $product['price__c'],
                     "currency"      => "USD",
                     "image_url"     => $product['imageurl__c']
                 ]
