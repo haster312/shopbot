@@ -1,13 +1,6 @@
 <?php
 namespace Api\Helper;
-require "/../../vendor/autoload";
 class Mail {
-
-    public static function createMailer() {
-        $apiKey = getenv('SENDGRID_API_KEY');
-        $sg = new \SendGrid($apiKey);
-        return $sg;
-    }
 
     /**
      * Send Mail
@@ -25,7 +18,9 @@ class Mail {
         $body    = new \SendGrid\Content("text/html", $body);
         $mail    = new \SendGrid\Mail($from, $subject, $to, $body);
 
-        $sg = Mail::createMailer();
+        $apiKey = getenv('SENDGRID_API_KEY');
+        $sg = new \SendGrid($apiKey);
+        var_dump($sg);exit;
         $response = $sg->client->mail()->send->post($mail);
         return $response->statusCode();
     }
