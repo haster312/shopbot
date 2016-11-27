@@ -1,4 +1,5 @@
 <?php
+/* @var $bot \GigaAI\MessengerBot */
 $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 
 /*
@@ -78,7 +79,7 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
 //Handle category post back
 $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
     //Get category product
-    $bot->say('Sorry, there is no product in this category at the moment for ' . json_encode($input));
+    $bot->say('Sorry, there is no product in this category at the moment for ' . json_encode($bot->received));
 });
 
 
