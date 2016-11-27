@@ -2,6 +2,7 @@
 namespace Api\Helper;
 use SendGrid\Email;
 use SendGrid;
+require "vendor/autoload.php";
 class Mail {
 
     public static function createMailer() {
