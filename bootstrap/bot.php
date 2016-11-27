@@ -29,7 +29,6 @@ require_once __DIR__ . '/../Api/autoload.php';
 */
 
 GigaAI\Core\Config::loadFromFile(__DIR__ . '/../config.php');
-require_once 'databot.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +38,7 @@ require_once 'databot.php';
 */
 
 $bot = new GigaAI\MessengerBot;
-
+require_once 'databot.php';
 /*
 |--------------------------------------------------------------------------
 | Bot Is Ready With You
