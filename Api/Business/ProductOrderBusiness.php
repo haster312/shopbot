@@ -85,7 +85,7 @@ class ProductOrderBusiness extends Business {
                 $content['discount'] = $discount;
                 $content['total']    = $product['price__c'] - $discountPrice;
                 $body = Mail::renderOrder($content);
-                echo $body;exit;
+
                 try {
                     Mail::sendMail($fromEmail, $subject, $toEmail, $body);
                     return $ordernumber;
