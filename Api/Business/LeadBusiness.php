@@ -51,7 +51,7 @@ class LeadBusiness extends Business {
     public static function updateLead($facebookId, $lead){
         new static;
 
-        $updateLead = Lead::where('facebook__c',$facebookId)->first();
+        $updateLead = LeadBusiness::getLeadByFacebookId($facebookId);
 
         if ($updateLead) {
             $updateLead->firstname     = $lead['firstname'];
