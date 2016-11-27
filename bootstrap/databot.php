@@ -16,14 +16,29 @@ class DataBot extends Model {
         $this->bot = require __DIR__ . '/../bootstrap/bot.php';
     }
 
+    /**
+     * Set data
+     * @param $leadId
+     * @param $key
+     * @param $value
+     */
     public static function setData($leadId, $key, $value){
-        $instance = new DataBot();
-        $instance->lead_id  = $leadId;
-        $instance->key      = $key;
-        $instance->value   = serialize($value);
-        $instance->save();
+        new static;
+        $data = DataBot::where('lead_id', $leadId)->where('key', $key)->first();
+        if($data == null) $data = new DataBot();
+        $data->lead_id  = $leadId;
+        $data->key      = $key;
+        $data->value    = serialize($value);
+        $data->save();
+        return true;
     }
 
+    /**
+     * Get data
+     * @param $leadId
+     * @param $key
+     * @return mixed|null
+     */
     public static function getData($leadId, $key){
         new static;
         $data = DataBot::where('lead_id', $leadId)->where('key', $key)->first();

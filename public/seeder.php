@@ -132,7 +132,8 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
     $payload = $bot->received->entry[0]->messaging[0]->postback->payload;
     $productId = explode('_', $payload)[1];
     //Save temp data
-    DataBot::setData($lead_id, 'productId', $productId);
+    $result = DataBot::setData($lead_id, 'productId', $productId);
+    $bot->say('Result: ' . json_encode($result));
 
     return 'Please tell me your email.';
 })->then(function($bot, $lead_id, $input){
@@ -162,6 +163,7 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
 })->then(function($bot, $lead_id, $input){
     //Get product Id
     $productId = DataBot::getData($lead_id, 'productId');
+    $bot->say('Result: ' . json_encode($productId));
 
     $hLead = \Api\Business\LeadBusiness::getLeadByFacebookId($lead_id);
     $hLead['street'] = $input;
@@ -173,7 +175,7 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
     $orderId = \Api\Business\ProductOrderBusiness::createOrder($lead_id, $productId);
 
     return 'Thank you for your order. Your order code is ' . $orderId .
-        '. You can check your receipt anytime by typing \'Receipt\' any time or access the Menu and choose  \'Receipt\'' . $productId;
+        '. You can check your receipt anytime by typing \'Receipt\' any time or access the Menu and choose  \'Receipt\'' . json_encode($productId);
 });
 
 // About Ebiz
