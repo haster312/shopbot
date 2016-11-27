@@ -165,7 +165,7 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
 
     //Create order
     $orderId = \Api\Business\ProductOrderBusiness::createOrder($lead_id, $productId);
-    $bot->say(json_encode($hLead) . 'Lead: ' . $lead_id . 'Product: ' . $productId);
+    $bot->say(json_encode($hLead) . 'Lead: ' . $lead_id . 'Product: ' . json_encode($bot->received));
     return 'Thank you for your order. Your order code is ' . $orderId .
         '. You can check your receipt anytime by typing \'Receipt\' any time or access the Menu and choose  \'Receipt\'';
 });
