@@ -192,10 +192,6 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
     $discountAmount = $product['price__c'] * $discountPercent / 100;
     $totalCost = $product['price__c'] - $discountAmount;
 
-    $bot->say('Receipt' . $receipt['productid__c']);
-    $bot->say('Product: ' . json_encode($product['name']));
-    $bot->say('Promotion: ' . json_encode($promotion));
-
     $mix =
         [
             "recipient_name"    => $userProfile['first_name'] . ' ' . $userProfile['last_name'],
@@ -220,8 +216,8 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
             ],
             "adjustments" => [
                 [
-                    'name'          => 'Promotion Discount ',
-                    'amount'        => 10
+                    'name'          => 'Promotion Discount ' . $discountPercent . '%',
+                    'amount'        => $discountAmount
                 ]
             ]
         ];
