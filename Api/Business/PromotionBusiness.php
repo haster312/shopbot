@@ -44,6 +44,10 @@ class PromotionBusiness extends Business {
 
     }
 
+    /**
+     * @param $productId
+     * @return null
+     */
     public static function getPromotionByProductId($productId) {
         new static;
 
@@ -58,5 +62,13 @@ class PromotionBusiness extends Business {
         } else {
             return null;
         }
+    }
+
+
+    public static function getPromotionById($sfid){
+        $promotion = Promotion::where('sfid',$sfid)->first();
+        if($promotion)
+            return $promotion->toArray();
+        return null;
     }
 }

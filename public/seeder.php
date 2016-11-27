@@ -183,29 +183,45 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
     $userProfile = \GigaAI\Http\Request::getUserProfile($lead_id);
     if($receipt == null)
         return 'It seem not a valid order id, could you check and enter again?';
-    return
+
+    $product = \Api\Business\ProductBusiness::getProductById($receipt['productid__c']);
+    $promotion = \Api\Business\PromotionBusiness::getPromotionById($receipt['sfid']);
+    $discountPercent = 0;
+    if($promotion){
+        $discountPercent = $promotion->discount__c;
+    }
+    $discountAmount = $product->price__c * $discountPercent / 100;
+    $totalCost = $product->price_c - $discountAmount;
+
+    $mix =
         [
-            "recipient_name" => "Stephane Crozatier",
-            "order_number" => rand(0, 100000),
+            "recipient_name" => $userProfile['first_name'] . ' ' . $userProfile['last_name'],
+            "order_number" => $receipt->ordernumber__c,
             "currency" => "USD",
             "payment_method" => "COD",
             "elements" => [
                 [
-                    "title" => "Classic White T-Shirt",
-                    "subtitle" => "100% Soft and Luxurious Cotton",
-                    "quantity" => 2,
-                    "price" => 50,
-                    "currency" => "USD",
-                    "image_url" => "http://petersapparel.parseapp.com/img/whiteshirt.png"
+                    "title"         => $product->name,
+                    "subtitle"      => substr($product->description, 50) . ' ...',
+                    "quantity"      => 1,
+                    "price"         => $product->price__c,
+                    "currency"      => "USD",
+                    "image_url"     => $product->imageurl__c
                 ]
             ],
             "summary" => [
-                "subtotal" => 75.00,
-                "shipping_cost" => 4.95,
-                "total_tax" => 6.19,
-                "total_cost" => 56.14
+                "subtotal" => $product->price__c,
+                "shipping_cost" => 0,
+                "total_tax" => 0,
+                "total_cost" => $totalCost
             ]
         ];
+    $mix['adjustments'] = [
+        [
+            'name'      => 'Promotion Discount ' . $discountPercent,
+            'amount'    => $discountAmount
+        ]
+    ];
 });
 
 // About Ebiz
