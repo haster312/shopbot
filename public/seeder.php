@@ -76,9 +76,9 @@ $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
     return $mix;
 });
 //Handle category post back
-$bot->answer('payload:cat_%', function($bot){
+$bot->answer('payload:cat_%', function($bot, $lead_id, $input){
     //Get category product
-    $bot->say('Sorry, there is no product in this category at the moment');
+    $bot->say('Sorry, there is no product in this category at the moment for ' . json_encode($input));
 });
 
 
