@@ -31,7 +31,7 @@ class LeadBusiness extends Business {
         $newLead = new Lead();
         $newLead->firstname     = $lead['firstname'];
         $newLead->lastname      = $lead['lastname'];
-        $newLead->facebookid__c = $lead['facebook_id'];
+        $newLead->facebookid__c = $lead['facebook__c'];
         $newLead->phone         = $lead['phone'];
         $newLead->email         = $lead['email'];
         $newLead->company       = "Company";
@@ -56,7 +56,6 @@ class LeadBusiness extends Business {
         if ($updateLead) {
             $updateLead->firstname     = $lead['firstname'];
             $updateLead->lastname      = $lead['lastname'];
-            $updateLead->facebookid__c = $lead['facebook_id'];
             $updateLead->phone         = $lead['phone'];
             $updateLead->email         = $lead['email'];
             $updateLead->company       = "Company";
