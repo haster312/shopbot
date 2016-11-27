@@ -2,7 +2,7 @@
 use \Illuminate\Database\Eloquent\Model;
 
 class DataBot extends Model {
-
+    protected $connection = 'mysql';
     public $table = "bot_data";
     public $timestamps = false;
     protected $fillable = [
