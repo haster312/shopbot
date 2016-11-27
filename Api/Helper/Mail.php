@@ -1,6 +1,6 @@
 <?php
 namespace Api\Helper;
-require __DIR__."../vendor/autoload";
+require "../vendor/autoload";
 class Mail {
 
     public static function createMailer() {
