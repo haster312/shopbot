@@ -193,12 +193,15 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
     $discountAmount = $product->price__c * $discountPercent / 100;
     $totalCost = $product->price_c - $discountAmount;
 
+    $bot->say('Result: ' . json_encode($product));
+    $bot->say('Result: ' . json_encode($promotion));
+
     $mix =
         [
-            "recipient_name" => $userProfile['first_name'] . ' ' . $userProfile['last_name'],
-            "order_number" => $receipt->ordernumber__c,
-            "currency" => "USD",
-            "payment_method" => "COD",
+            "recipient_name"    => $userProfile['first_name'] . ' ' . $userProfile['last_name'],
+            "order_number"      => $receipt->ordernumber__c,
+            "currency"          => "USD",
+            "payment_method"    => "COD",
             "elements" => [
                 [
                     "title"         => $product->name,
@@ -210,18 +213,18 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
                 ]
             ],
             "summary" => [
-                "subtotal" => $product->price__c,
-                "shipping_cost" => 0,
-                "total_tax" => 0,
-                "total_cost" => $totalCost
+                "subtotal"          => $product->price__c,
+                "shipping_cost"     => 0,
+                "total_tax"         => 0,
+                "total_cost"        => $totalCost
+            ],
+            "adjustments" => [
+                [
+                    'name'          => 'Promotion Discount ' . $discountPercent,
+                    'amount'        => $discountAmount
+                ]
             ]
         ];
-    $mix['adjustments'] = [
-        [
-            'name'      => 'Promotion Discount ' . $discountPercent,
-            'amount'    => $discountAmount
-        ]
-    ];
     return $mix;
 });
 
