@@ -73,9 +73,8 @@ class ProductOrderBusiness extends Business {
                 $fromEmail = "contact@ebiz.solutions";
                 $subject = "Order Confirmation from Ebiz Solutions - Order No $ordernumber";
                 $toEmail = $lead['email'];
-                $body    = Mail::renderOrder($lead, $product, $discount, $ordernumber);
+
                 $discountPrice = ($product['price__c'] * $discount)/100;
-                $orderDate = date('M d Y');
                 $content['orderNumber'] = $ordernumber;
                 $content['name']     = $lead['firstname']. " " .$lead['lastname'];
                 $content['address']  = $lead['street'];

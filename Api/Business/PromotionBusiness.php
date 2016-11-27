@@ -59,4 +59,17 @@ class PromotionBusiness extends Business {
             return null;
         }
     }
+
+    public static function getPromotionByPromotionCode($promotionCode) {
+        new static;
+
+        $promotion = Promotion::where('sfid',$promotionCode)->first();
+
+        if ($promotion) {
+            return $promotion->toArray();
+        } else {
+            return null;
+        }
+    }
+
 }
