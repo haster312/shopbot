@@ -104,11 +104,11 @@ $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
         $aProduct = [
             "title"     => $hProduct['name'],
             "image_url" => $hProduct['imageurl__c'],
-            "subtitle"  => substr($hProduct['description'], 0, 50),
+            "subtitle"  => substr($hProduct['description'], 0, 50) . '...',
             "buttons"   => [
                 [
                     "type"    => "postback",
-                    "payload" => "p_" . $hProduct['id'],
+                    "payload" => "product_" . $hProduct['id'],
                     "title"   => "Order"
                 ]
             ]
@@ -128,7 +128,7 @@ $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
 */
 $productId = '';
 $lead = new \Api\Model\Lead();
-$bot->answer('payload:p_%', function($bot, $lead_id, $input) use (&$productId){
+$bot->answer('payload:product_%', function($bot, $lead_id, $input) use (&$productId){
     //Get product id
     $payload = $bot->received->entry[0]->messaging[0]->postback->payload;
     $productId = explode('_', $payload)[1];
