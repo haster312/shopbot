@@ -147,7 +147,7 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
     $GLOBALS['lead'][$lead_id]['lastname'] = $userProfile['last_name'];
     $GLOBALS['lead'][$lead_id]['email'] = $input;
     $GLOBALS['lead'][$lead_id]['facebookid__c'] = $lead_id;
-
+    $bot->say(json_encode($GLOBALS['lead'][$lead_id]) . 'Lead: ' . $lead_id);
     return 'Please tell me your address.';
 })->then(function($bot, $lead_id, $input){
     $GLOBALS['lead'][$lead_id]['street'] = $input;
@@ -161,7 +161,7 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
     }
     //Create order
     $orderId = \Api\Business\ProductOrderBusiness::createOrder($lead_id, $GLOBALS['productId']);
-    $bot->say(json_encode($GLOBALS['lead'][$lead_id]));
+    $bot->say(json_encode($GLOBALS['lead'][$lead_id]) . 'Lead: ' . $lead_id);
     return 'Thank you for your order. Your order code is ' . $orderId .
         '. You can check your receipt anytime by typing \'Receipt\' any time or access the Menu and choose  \'Receipt\'';
 });
