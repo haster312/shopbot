@@ -5,19 +5,18 @@ use GigaAI\Storage\Storage;
 class DataBot extends Model {
     public $table = "bot_data";
     public $timestamps = false;
-    public $connection;
+    public $bot;
     protected $fillable = [
         'lead_id', 'key', 'value'
     ];
 
     function __construct(array $attributes = array())
     {
-        $this->connection = new Storage();
+        $this->bot = require_once __DIR__ . '/../bootstrap/bot.php';
         parent::__construct($attributes);
     }
 
     public static function setData($leadId, $key, $object){
-        new static;
         $instance = new DataBot();
         $instance->lead_id  = $leadId;
         $instance->key      = $key;
