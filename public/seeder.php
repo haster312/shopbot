@@ -127,7 +127,7 @@ $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
 |
 */
 $GLOBALS['lead'] = new \Api\Model\Lead();
-$GLOBALS['productId'] = '';
+$GLOBALS['productId'] = [];
 $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
     //Get product id
     $payload = $bot->received->entry[0]->messaging[0]->postback->payload;
@@ -140,14 +140,14 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
     }
 
     $userProfile = \GigaAI\Http\Request::getUserProfile($lead_id);
-    $GLOBALS['lead']->firstname = $userProfile['first_name'];
-    $GLOBALS['lead']->lastname = $userProfile['last_name'];
-    $GLOBALS['lead']->email = $input;
-    $GLOBALS['lead']->facebookid__c = $lead_id;
+    $GLOBALS['lead']['firstname'] = $userProfile['first_name'];
+    $GLOBALS['lead']['lastname'] = $userProfile['last_name'];
+    $GLOBALS['lead']['email'] = $input;
+    $GLOBALS['lead']['facebookid__c'] = $lead_id;
 
     return 'Please tell me your address.';
 })->then(function($bot, $lead_id, $input){
-    $GLOBALS['lead']->street = $input;
+    $GLOBALS['lead']['street'] = $input;
     //Register lead
     $hLead = \Api\Business\LeadBusiness::getLeadByFacebookId($lead_id);
     if ($hLead != null){
