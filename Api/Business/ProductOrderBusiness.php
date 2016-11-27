@@ -74,7 +74,8 @@ class ProductOrderBusiness extends Business {
                 $subject = "Order Confirmation from Ebiz Solutions - Order No $ordernumber";
                 $toEmail = $lead['email'];
                 $discountPrice = ($product['price__c'] * $discount)/100;
-                $body  = "<link href='/styles.css' media='all' rel='stylesheet' type='text/css' />";
+                $orderDate = date('M d Y');
+                $body  = "<link href='Api/Helper/styles.css' media='all' rel='stylesheet' type='text/css' />";
                 $body .= "<table class='body-wrap'><tr><td></td>";
                 $body .= "<td class='container' width='600'><div class='content'>
 				            <table class='main' width='100%' cellpadding='0' cellspacing='0'>
@@ -87,10 +88,15 @@ class ProductOrderBusiness extends Business {
                                 </td>
                             </tr>";
                 $body .= "<tr>
+                            <td class='content-block'>
+                                <h2 class='aligncenter'>Thank you for using our services.</h2>
+                            </td>
+                        </tr>";
+                $body .= "<tr>
                             <td class='content-block aligncenter'>
                                 <table class='invoice'>";
                 $body .= "<tr>
-                              <td>".$lead['firstname'] ." ".$lead['lastname']."<br>date('M d Y')</td>
+                              <td>".$lead['firstname'] ." ".$lead['lastname']."<br>". $lead['street'] ."<br>".$orderDate."</td>
                           </tr>";
                 $body .= "<tr>
                             <td>
@@ -101,18 +107,13 @@ class ProductOrderBusiness extends Business {
                                     </tr>
                                     <tr>
                                         <td>Discount</td>
-                						<td class='alignright'>$ ". $discount ."%</td>
+                						<td class='alignright'>". $discount ."%</td>
                                     </tr>";
                 $body .= "<tr class='total'>
                                 <td class='alignright' width='80%'>Total</td>
                                 <td class='alignright'>$ ". ($product['price__c'] - $discountPrice) ."</td>
                             </tr>";
                 $body .= "</table></td></tr></table></td></tr>";
-                $body .= "<tr>
-                                <td class='content-block aligncenter'>
-                                    ". $lead['street'] ."
-                                </td>
-                            </tr>";
                 $body .= "</table></div></td><td></td></tr></table>";
                 echo $body;exit;
                 $status = Mail::sendMail($fromEmail, $subject, $toEmail, $body);
