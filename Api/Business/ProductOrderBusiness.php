@@ -34,6 +34,12 @@ class ProductOrderBusiness extends Business {
             return null;
     }
 
+    /**
+     * create new order from lead, product
+     * @param $facebookId
+     * @param $productId
+     * @return bool
+     */
     public static function createOrder($facebookId, $productId) {
         new static;
 
@@ -45,7 +51,7 @@ class ProductOrderBusiness extends Business {
         $product   = ProductBusiness::getProductById($productId);
         $promotion = PromotionBusiness::getPromotionByProductId($productId);
 
-        if (!$lead || !$product) {
+        if ($lead && $product) {
             $productOrder = New ProductOrder();
             $productOrder->name             = "Order $product->name";
             $productOrder->productid__c     = $product->id;
