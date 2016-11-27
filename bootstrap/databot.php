@@ -43,7 +43,7 @@ class DataBot extends Model {
         new static;
         $data = DataBot::where('lead_id', $leadId)->where('key', $key)->first();
         if($data)
-            return unserialize($data);
+            return unserialize($data->value);
         return null;
     }
 }
