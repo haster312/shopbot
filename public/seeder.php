@@ -147,7 +147,7 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input) use (&$productId)
 
     return 'Please tell me your address.';
 })->then(function($bot, $lead_id, $input) use (&$lead, $productId){
-    $lead->address = $input;
+    $lead->street = $input;
     //Register lead
     $hLead = \Api\Business\LeadBusiness::getLeadByFacebookId($lead_id);
     if ($hLead != null){
@@ -158,6 +158,7 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input) use (&$productId)
     }
     //Create order
     $orderId = \Api\Business\ProductOrderBusiness::createOrder($lead_id, $productId);
+    $bot->say(json_encode($lead));
     return 'Thank you for your order. Your order code is ' . $orderId .
         '. You can check your receipt anytime by typing \'Receipt\' any time or access the Menu and choose  \'Receipt\'';
 });
