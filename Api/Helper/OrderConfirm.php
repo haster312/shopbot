@@ -98,8 +98,10 @@
                             </table>
                         </td>
                         </tr>
+                        <tr>
+                            <td colspan="2"><h2 style="text-align: center"><strong>Thank you for using our services.</strong></h2></td>
+                        </tr>
                     </table>
-                    <h2 style="text-align: center"><strong>Thank you for using our services.</strong></h2>
                 </div>
             </td>
         </tr>
