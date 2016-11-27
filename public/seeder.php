@@ -52,12 +52,14 @@ $bot->answer('payload:USER_TAPPED_EVENT', function() {
 $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
     //Check the category list
     $hCategories = \Api\Business\CategoryBusiness::getAllCategories();
-
+    if(count($hCategories) == 0){
+        return 'Sorry, I could not get any information from Ebiz Shop for now. Please check it back later. Sorry about this :(';
+    }
     $mix = [];
     $mix[] = 'We have some kind of product lines for you.';
     $categories = [];
 
-    /* @var $hCategory Category */
+    /* @var $hCategory \Api\Model\Category */
     foreach ($hCategories as $hCategory){
         $aCategory = [
             "title"     => $hCategory['name'],
@@ -81,9 +83,34 @@ $bot->answer('payload:cat_%', function($bot, $lead_id, $input){
     //Get category product
     $payload = $bot->received->entry[0]->messaging[0]->postback->payload;
     $categoryId = explode('_', $payload)[1];
-    $products = \Api\Business\CategoryBusiness::getProducts($categoryId);
+    $hProducts = \Api\Business\CategoryBusiness::getProducts($categoryId);
 
-    $bot->say('Sorry, there is no product in this category at the moment.' . json_encode($products));
+    if(count($hProducts) == 0) {
+        return 'Sorry, there is no product in this category at the moment.';
+    }
+    $mix = [];
+    $mix[] = 'Check some products here, hope you interested in somethings';
+    $products = [];
+
+    /* @var $aProduct \Api\Model\Product */
+    foreach ($hProducts as $hProduct){
+        $aProduct = [
+            "title"     => $hProduct['name'],
+            "image_url" => $hProduct['imageurl__c'],
+            "subtitle"  => $hProduct['description__c'],
+            "buttons"   => [
+                [
+                    "type"    => "postback",
+                    "payload" => "pro_" . $hProduct['id'],
+                    "title"   => "Order"
+                ]
+            ]
+        ];
+        $products[] = $aProduct;
+    }
+    $mix[] = $products;
+    return $mix;
+
 });
 
 
