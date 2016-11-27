@@ -178,7 +178,6 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
 
 $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot, $lead_id, $input){
     $receipt = \Api\Business\ProductOrderBusiness::getProductOrderByNumber($input);
-    $bot->say('Result: ' . json_encode($receipt) . $input);
 
     $userProfile = \GigaAI\Http\Request::getUserProfile($lead_id);
     if($receipt == null)
@@ -193,8 +192,8 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
     $discountAmount = $product->price__c * $discountPercent / 100;
     $totalCost = $product->price_c - $discountAmount;
 
-    $bot->say('Result: ' . json_encode($product));
-    $bot->say('Result: ' . json_encode($promotion));
+    $bot->say('Result: ' . json_encode($product->name));
+    $bot->say('Promotion: ' . json_encode($promotion));
 
     $mix =
         [
