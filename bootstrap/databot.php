@@ -12,8 +12,8 @@ class DataBot extends Model {
 
     function __construct(array $attributes = array())
     {
-        $this->bot = require_once __DIR__ . '/../bootstrap/bot.php';
         parent::__construct($attributes);
+        $this->bot = require __DIR__ . '/../bootstrap/bot.php';
     }
 
     public static function setData($leadId, $key, $value){
@@ -25,8 +25,8 @@ class DataBot extends Model {
     }
 
     public static function getData($leadId, $key){
-        $instance = new DataBot();
-        $data = $instance->where('lead_id', $leadId)->where('key', $key)->first();
+        new static;
+        $data = DataBot::where('lead_id', $leadId)->where('key', $key)->first();
         if($data)
             return unserialize($data);
         return null;
