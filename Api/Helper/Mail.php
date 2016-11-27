@@ -2,7 +2,7 @@
 namespace Api\Helper;
 use SendGrid\Email;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '../../vendor/autoload.php';
 class Mail {
 
     public static function createMailer() {
