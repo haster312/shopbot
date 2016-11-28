@@ -78,7 +78,7 @@ class ProductOrderBusiness extends Business {
                 $content['orderNumber'] = $ordernumber;
                 $content['name']     = $lead['firstname']. " " .$lead['lastname'];
                 $content['address']  = $lead['street'];
-                $content['date']     = date('M d Y');
+                $content['date']     = date('M d Y h:i:s');
                 $content['product']  = $product['name'];
                 $content['price']    = $product['price__c'];
                 $content['discount'] = $discount;
