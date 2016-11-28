@@ -175,19 +175,20 @@ return array(
 
 	'persistent_menu' => [
         [
-            'type'      => 'postback',
-            'title'     => 'Products',
-            'payload'   => 'PRODUCT'
+            'type'      => 'text',
+            'title'     => 'Products'
         ],
         [
-            'type'      => 'event',
-            'title'     => 'Events',
-            'payload'	=> 'EVENT'
+            'type'      => 'text',
+            'title'     => 'Events'
         ],
         [
-            'type'      => 'postback',
-            'title'     => 'About Ebiz',
-            'payload'   => 'EBIZ'
+            'type'      => 'text',
+            'title'     => 'Receipt'
+        ],
+        [
+            'type'      => 'text',
+            'title'     => 'About Ebiz'
         ],
     ],
 );
