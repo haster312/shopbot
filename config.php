@@ -177,17 +177,17 @@ return array(
     'persistent_menu' => [
         [
             "type" => "postback",
-            "title" => "Help1",
-            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+            "title" => "Show Products",
+            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_PRODUCT"
         ],
         [
             "type" => "postback",
-            "title" => "Start a New Order1",
-            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
+            "title" => "Find receipt",
+            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_RECEIPT"
         ],
         [
             "type" => "web_url",
-            "title" => "View Website1",
+            "title" => "Ebiz Website",
             "url" => "http://petersapparel.parseapp.com/"
         ]
     ]
