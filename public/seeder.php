@@ -49,7 +49,7 @@ $bot->answer('payload:USER_TAPPED_EVENT', function() {
 });
 
 // Products
-$bot->answer(['payload:USER_TAPPED_PRODUCT', 'payload:DEFINED_PAYLOAD_PRODUCT','Products'], function($bot) {
+$bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
     //Check the category list
     $hCategories = \Api\Business\CategoryBusiness::getAllCategories();
     if(count($hCategories) == 0){
@@ -228,6 +228,12 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
 $bot->answer('payload:USER_TAPPED_ABOUT',
 	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries. Check our website for more detail: http://ebiz.solutions'
 );
+
+// Action when user click "Get Started" button
+$bot->answer('payload:GIGA_GET_STARTED_PAYLOAD', 'Hi [first_name]! How are you today? Say \'Hello\' to begin the conversation');
+
+// Default answer
+$bot->answer('default:', 'Sorry I\'m not understand. You could check the Menu for begin the conversation. Thank you.');
 
 // Print some message to the browser when done
 dd('Nodes seeded!');

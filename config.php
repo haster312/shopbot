@@ -176,16 +176,6 @@ return array(
 
     'persistent_menu' => [
         [
-            "type" => "postback",
-            "title" => "Help",
-            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
-        ],
-        [
-            "type" => "postback",
-            "title" => "Start a New Order",
-            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
-        ],
-        [
             "type" => "web_url",
             "title" => "View Website",
             "url" => "http://petersapparel.parseapp.com/"
