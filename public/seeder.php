@@ -184,7 +184,7 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
         return 'It seem not a valid order id, could you check and enter again?';
 
     $product = \Api\Business\ProductBusiness::getProductById($receipt['productid__c']);
-    $promotion = \Api\Business\PromotionBusiness::getPromotionByPromotionCode($receipt['sfid']);
+    $promotion = \Api\Business\PromotionBusiness::getPromotionByPromotionCode($receipt['promotion__c']);
     $discountPercent = 0;
     if($promotion){
         $discountPercent = $promotion['discount__c'];
