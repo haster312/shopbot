@@ -54,11 +54,12 @@ return array(
 	 | If storage driver is `mysql`, set connection here
 	 |
 	 */
+
     'mysql' => [
-        'host'      => 'sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-        'database'  => 'py8f8c995rfqb9lo',
-        'username'  => 'hlsezsfde0au226c',
-        'password'  => 'i7luynhy8pinj59p',
+        'host'      => 'us-cdbr-iron-east-04.cleardb.net',
+        'database'  => 'heroku_aed1426a52073c7',
+        'username'  => 'be0b9822497322',
+        'password'  => 'ce9a1361',
         'charset'   => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'prefix'    => '',
