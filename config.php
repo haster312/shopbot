@@ -135,7 +135,7 @@ return array(
 	 |
 	 */
 
-	'greeting_text' => 'Welcome to Ebiz Store!',
+	'greeting_text' => 'Welcome to Ebiz Store! Say \'Hi\' to begin the conversation.',
 
 	/*
 	 |------------------------------------------------------------------------
@@ -176,18 +176,8 @@ return array(
 
     'persistent_menu' => [
         [
-            "type" => "postback",
-            "title" => "Products",
-            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
-        ],
-        [
-            "type" => "postback",
-            "title" => "Receipt",
-            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
-        ],
-        [
             "type" => "web_url",
-            "title" => "About Ebiz",
+            "title" => "View Website",
             "url" => "http://petersapparel.parseapp.com/"
         ]
     ]

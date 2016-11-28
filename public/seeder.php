@@ -11,14 +11,9 @@ $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 |
 */
 
-$bot->answer('^(hi|hello|fine)', [
+$bot->answer('^(hi|hello|fine|begin|menu)', [
 	'Hello [first_name]! I could help you with the following items',
     'quick_replies' => [
-        [
-            'content_type' => 'text',
-            'title' => 'Events',
-            'payload' => 'USER_TAPPED_EVENT'
-        ],
         [
             'content_type' => 'text',
             'title' => 'Products',
@@ -42,14 +37,8 @@ $bot->answer('^(hi|hello|fine)', [
 |
 */
 
-// Events
-$bot->answer('payload:USER_TAPPED_EVENT', function() {
-	//Check the events
-	return "There is no event at the moment. But I guess in the next few days, it will has somethings cool.";
-});
-
 // Products
-$bot->answer(['payload:USER_TAPPED_PRODUCT', 'payload:DEFINED_PAYLOAD_PRODUCT','Products'], function($bot) {
+$bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
     //Check the category list
     $hCategories = \Api\Business\CategoryBusiness::getAllCategories();
     if(count($hCategories) == 0){
@@ -173,7 +162,7 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
     $orderId = \Api\Business\ProductOrderBusiness::createOrder($lead_id, $productId);
 
     $bot->say('Thank you for your order. Your order code is ' . $orderId .
-        '. You can check your receipt anytime by typing \'Receipt\' any time or access the Menu and choose  \'Receipt\'');
+        '. You can check your receipt anytime by typing \'Receipt\' any time.');
 });
 
 $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot, $lead_id, $input){
@@ -228,6 +217,9 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
 $bot->answer('payload:USER_TAPPED_ABOUT',
 	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries. Check our website for more detail: http://ebiz.solutions'
 );
+
+// Default answer
+$bot->answer('default:', 'Sorry I\'m not understand. You can type \'Begin\' or \'Hello\' to start a new conversation.');
 
 // Print some message to the browser when done
 dd('Nodes seeded!');
