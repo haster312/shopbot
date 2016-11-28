@@ -106,8 +106,7 @@
                             <p>Unless you have a reason otherwise, leave the default option (Install for Admins Only) selected when installing.</p>
                             <img src="img/salesforce/step-1.jpg">
                         </li>
-                        <li>Now you can check for Ebiz Solution Bot in Installed App.</li>
-                        <li class="numberless">Once your app is set up, get started with the <a href="walkthrough.html">TimeTracker Walkthrough</a>.</li>
+                        <li>Now you can check for Ebiz Solution Bot in Installed App and create first promotion for your product</li>
                     </ol>
                 </div>
             </div>
@@ -119,12 +118,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <ol class="setup">
-                        <li>Install the TimeTracker unmanaged package to your Salesforce org.<br><a href="#salesforce">Step-by-step Salesforce instructions</a></li>
-                        <li>Deploy a copy of the app to Heroku.<br><a href="#heroku">Step-by-step Heroku instructions</a></li>
-                        <li>Connect the Heroku Connect add-on to your Salesforce org, and import the configuraton json.<br><a href="#heroku-connect">Step-by-step Heroku Connect instructions</a></li>
-                        <li>Restart your Heroku App dynos.<br><a href="#heroku-dyno-restart">Step-by-step Heroku Dyno Restart instructions</a></li>
-                        <li>Finish setting up the app by <a href="#user-setup">giving yourself a user</a>.</li>
-                        <li class="numberless">Once your app is set up, get started with the <a href="walkthrough.html">TimeTracker Walkthrough</a>.</li>
+                        <li><p>Deploy your own instance of Ebiz Bot on Heroku by clicking the button below.</p>
+                            <a href="#"><img src="img/dth_light.png" class="install-button"></a>
+                        </li>
+                        <li>Choose a unique name for your Ebiz Bot instance.</li>
+                        <li>Add new variable PRIMARY_EMAIL_ADDRESS in Settings > Config Variables for SendGrid sending email.</li>
                     </ol>
                 </div>
             </div>
@@ -136,12 +134,30 @@
             <div class="row">
                 <div class="col-md-12">
                     <ol class="setup">
-                        <li>Install the TimeTracker unmanaged package to your Salesforce org.<br><a href="#salesforce">Step-by-step Salesforce instructions</a></li>
-                        <li>Deploy a copy of the app to Heroku.<br><a href="#heroku">Step-by-step Heroku instructions</a></li>
-                        <li>Connect the Heroku Connect add-on to your Salesforce org, and import the configuraton json.<br><a href="#heroku-connect">Step-by-step Heroku Connect instructions</a></li>
-                        <li>Restart your Heroku App dynos.<br><a href="#heroku-dyno-restart">Step-by-step Heroku Dyno Restart instructions</a></li>
-                        <li>Finish setting up the app by <a href="#user-setup">giving yourself a user</a>.</li>
-                        <li class="numberless">Once your app is set up, get started with the <a href="walkthrough.html">TimeTracker Walkthrough</a>.</li>
+                        <li>Click the Heroku Connect link in the Installed add-ons section of the app dashboard.</li>
+                        <li>Click the Setup Connection button. </li>
+                        <li>Select the HEROKU_CONNECT_DB Postgres database. Choose DATABASE_URL for DB Config Vars</li>
+                        <li>Click the Next button in the top right of the page.</li>
+                        <li>Click the Authorize button in the top right of the page.</li>
+                        <li>You will be prompted to Choose a Username. If you have multiple options, be sure to select the username associated with the Salesforce org your Ebiz Bot instance should connect to</li>
+                        <li>You will be prompted to Allow Access?. Click the Allow button at the bottom right</li>
+                        <li>Now back to Heroku Connect Dashboard, choose Settings > Import/Export Configuration > click Import for mapping data with Salesforce</li>
+                        <li>
+                            <p>Download the Heroku Connect configuration file to your computer.</p>
+                            <a href="src/ebizbot.json">
+                                <img src="img/hcc_light.png" class="install-button">
+                            </a>
+                        </li>
+                        <li>
+                            On the Heroku Connect page, click Choose a File and select the file you have downloaded
+                        </li>
+                        <li>
+                            Click the Upload button in the top right of the page
+                        </li>
+                        <li>
+                            <p>The connection between your TimeTracker database and Salesforce is now being set up. Keep an eye on the Mappings section. Wait until you have nine objects wth a status of OK before you continue. This may take a few minutes.</p>
+                            <img src="img/salesforce/step-2.jpg">
+                        </li>
                     </ol>
                 </div>
             </div>
