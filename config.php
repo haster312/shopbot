@@ -190,5 +190,5 @@ return array(
             "title" => "View Website",
             "url" => "http://petersapparel.parseapp.com/"
         ]
-    ];
+    ]
 );
