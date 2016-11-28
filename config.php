@@ -178,17 +178,17 @@ return array(
         [
             "type" => "postback",
             "title" => "Products",
-            "payload" => "DEFINED_PAYLOAD_PRODUCT"
+            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
         ],
         [
             "type" => "postback",
             "title" => "Receipt",
-            "payload" => "DEFINED_PAYLOAD_RECEIPT"
+            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
         ],
         [
             "type" => "web_url",
             "title" => "About Ebiz",
-            "url" => "http://ebiz.solutions"
+            "url" => "http://petersapparel.parseapp.com/"
         ]
     ]
 );
