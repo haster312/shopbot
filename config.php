@@ -10,8 +10,7 @@ return array(
 	 |
 	 */
 
-	'page_access_token' => 'EAAUMIYZBFcu8BAHesKlQbz5nqJM3ixkaqF054CWTqJ5OjgY8aNOJkfJlcwz5GPYQ7SXNj0ZAzjJZBFcIYULYjrUlc3355CozvccUYLzGyK4LpqgdZAg5vZCBDJfka6iT0NLtdntTTcALIZCPNe5l37D8CoIxdjJw9aHE3mh6BXEwZDZD',
-
+	'page_access_token' =>  'EAAUMIYZBFcu8BAIZCiY0BpTaclNdot0kZClN0knKKfEijo4qJWuZCDFc9LhriccGanxNzur9hYZAVGNtgTDnzI9y5hiEX2oHmN6zQx47O30DLYYfuBAkN1HhFcF08Xt6ERdxcWejYc785P6MMSV2qYvCMXflg8T398k31ZBZBF3fgZDZD',
 	/*
 	 |------------------------------------------------------------------------
 	 | Page ID
