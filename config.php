@@ -182,13 +182,13 @@ return array(
         ],
         [
             "type" => "postback",
-            "title" => "Start Order",
+            "title" => "Start a New Order",
             "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
         ],
         [
             "type" => "web_url",
             "title" => "View Website",
-            "url" => "http://ebiz.solutions"
+            "url" => "http://petersapparel.parseapp.com/"
         ]
     ]
 );
