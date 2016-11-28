@@ -11,14 +11,9 @@ $bot = require_once __DIR__ . '/../bootstrap/bot.php';
 |
 */
 
-$bot->answer('^(hi|hello|fine)', [
+$bot->answer('^(hi|hello|fine|begin|menu)', [
 	'Hello [first_name]! I could help you with the following items',
     'quick_replies' => [
-        [
-            'content_type' => 'text',
-            'title' => 'Events',
-            'payload' => 'USER_TAPPED_EVENT'
-        ],
         [
             'content_type' => 'text',
             'title' => 'Products',
@@ -41,12 +36,6 @@ $bot->answer('^(hi|hello|fine)', [
 | For detail: https://giga.ai/docs/standalone/quick-replies
 |
 */
-
-// Events
-$bot->answer('payload:USER_TAPPED_EVENT', function() {
-	//Check the events
-	return "There is no event at the moment. But I guess in the next few days, it will has somethings cool.";
-});
 
 // Products
 $bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
@@ -173,7 +162,7 @@ $bot->answer('payload:cap_%', function($bot, $lead_id, $input){
     $orderId = \Api\Business\ProductOrderBusiness::createOrder($lead_id, $productId);
 
     $bot->say('Thank you for your order. Your order code is ' . $orderId .
-        '. You can check your receipt anytime by typing \'Receipt\' any time or access the Menu and choose  \'Receipt\'');
+        '. You can check your receipt anytime by typing \'Receipt\' any time.');
 });
 
 $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot, $lead_id, $input){
@@ -230,10 +219,10 @@ $bot->answer('payload:USER_TAPPED_ABOUT',
 );
 
 // Action when user click "Get Started" button
-$bot->answer('payload:GIGA_GET_STARTED_PAYLOAD', 'Hi [first_name]! How are you today? Say \'Hello\' to begin the conversation');
+$bot->answer('payload:GIGA_GET_STARTED_PAYLOAD', 'Hi [first_name]! How are you today? Say \'Hi\' to begin the conversation');
 
 // Default answer
-$bot->answer('default:', 'Sorry I\'m not understand. You could check the Menu for begin the conversation. Thank you.');
+$bot->answer('default:', 'Sorry I\'m not understand. You can type \'Begin\' or \'Hello\' to start a new conversation.');
 
 // Print some message to the browser when done
 dd('Nodes seeded!');
