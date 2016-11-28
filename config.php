@@ -135,7 +135,7 @@ return array(
 	 |
 	 */
 
-	'greeting_text' => 'Welcome to Ebiz Store!',
+	'greeting_text' => 'Welcome to Ebiz Store! Say \'Hi\' to begin the conversation.',
 
 	/*
 	 |------------------------------------------------------------------------

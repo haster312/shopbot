@@ -218,9 +218,6 @@ $bot->answer('payload:USER_TAPPED_ABOUT',
 	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries. Check our website for more detail: http://ebiz.solutions'
 );
 
-// Action when user click "Get Started" button
-$bot->answer('payload:GIGA_GET_STARTED_PAYLOAD', 'Hi [first_name]! How are you today? Say \'Hi\' to begin the conversation');
-
 // Default answer
 $bot->answer('default:', 'Sorry I\'m not understand. You can type \'Begin\' or \'Hello\' to start a new conversation.');
 
