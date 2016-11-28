@@ -225,9 +225,8 @@ $bot->answer('Receipt', 'Please let me know your order id')->then(function($bot,
 });
 
 // About Ebiz
-$bot->answer('payload:USER_TAPPED_ABOUT', [
-	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries',
-	'Check our website for more detail: http://ebiz.solutions']
+$bot->answer('payload:USER_TAPPED_ABOUT',
+	'Elite Business Solutions (E-Biz) has been operating with the vision of provide ease for enterprise digitization in Asean countries. Check our website for more detail: http://ebiz.solutions'
 );
 
 
@@ -237,14 +236,6 @@ $bot->answer('payload:GIGA_GET_STARTED_PAYLOAD', 'Hi [first_name]! How are you t
 
 // Default answer
 $bot->answer('default:', 'Sorry I\'m not understand. You could check the Menu for begin the conversation. Thank you.');
-
-// Other
-$bot->answer([
-    '^(thank|thank you)'                => 'It been my pleasure!',
-    'you%funny%'                        => 'I don\'t think so :)',
-    '^(bad|bitch|fuck|shit|hell)'       => 'Sorry but it is my best',
-    '%fucking awesome%'                 => 'Really? I\'m glad to hear that'
-]);
 
 // Print some message to the browser when done
 dd('Nodes seeded!');
