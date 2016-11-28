@@ -12,7 +12,8 @@ class PromotionBusiness extends Business {
     public static function getCurrentPromotions(){
         new static;
 
-        $promotions = Promotion::all();
+        $currentDate = date('M d Y h:i:s');
+        $promotions = Promotion::where('enddate__c','>=',$currentDate)->get();
         if ($promotions)
             return $promotions->toArray();
         else
@@ -54,9 +55,13 @@ class PromotionBusiness extends Business {
         $product   = Product::find($productId);
 
         if ($product) {
+            $currentDate = date('M d Y h:i:s');
             $promotion = Promotion::where('promotionproduct__c', $product->sfid)->first();
             if ($promotion)
-                return $promotion->toArray();
+                if ($currentDate < date('M d Y h:i:s',strtotime($promotion->enddate__c)))
+                    return $promotion->toArray();
+                else
+                    return null;
             else
                 return null;
         } else {
@@ -75,9 +80,15 @@ class PromotionBusiness extends Business {
         $promotion = Promotion::where('sfid',$promotionCode)->first();
 
         if ($promotion) {
-            return $promotion->toArray();
+            $currentDate = date('M d Y h:i:s');
+            if ($currentDate <= date('M d Y h:i:s',strtotime($promotion->enddate__c)))
+                return $promotion->toArray();
+            else
+                return null;
         } else {
             return null;
         }
     }
+
+
 }
