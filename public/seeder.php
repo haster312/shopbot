@@ -49,7 +49,7 @@ $bot->answer('payload:USER_TAPPED_EVENT', function() {
 });
 
 // Products
-$bot->answer('payload:USER_TAPPED_PRODUCT', function($bot) {
+$bot->answer(['payload:USER_TAPPED_PRODUCT', 'payload:DEFINED_PAYLOAD_PRODUCT','Products'], function($bot) {
     //Check the category list
     $hCategories = \Api\Business\CategoryBusiness::getAllCategories();
     if(count($hCategories) == 0){
