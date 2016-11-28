@@ -174,22 +174,21 @@ return array(
 	 |
 	 */
 
-	'persistent_menu' => [
+    'persistent_menu' => [
         [
-            'type'      => 'text',
-            'title'     => 'Products'
+            "type" => "postback",
+            "title" => "Help",
+            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
         ],
         [
-            'type'      => 'text',
-            'title'     => 'Events'
+            "type" => "postback",
+            "title" => "Start a New Order",
+            "payload" => "DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
         ],
         [
-            'type'      => 'text',
-            'title'     => 'Receipt'
-        ],
-        [
-            'type'      => 'text',
-            'title'     => 'About Ebiz'
-        ],
-    ],
+            "type" => "web_url",
+            "title" => "View Website",
+            "url" => "http://petersapparel.parseapp.com/"
+        ]
+    ];
 );
