@@ -45,6 +45,10 @@ class PromotionBusiness extends Business {
 
     }
 
+    /**
+     * @param $productId
+     * @return null
+     */
     public static function getPromotionByProductId($productId) {
         new static;
 
